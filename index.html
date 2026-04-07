@@ -1,0 +1,2166 @@
+<!DOCTYPE html>
+    <html lang="en">
+    <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TicketNexa | Premium Movie & Event Booking</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    </head>
+    <body>
+    <div class="app-container">
+    <!-- Header -->
+    <header class="header">
+    <a href="index.html" class="logo" style="text-decoration: none;">
+    <img src="assets/logo.png" alt="TicketNexa Logo" class="logo-icon">
+    <span class="logo-text">TicketNexa <small>BY Pramit</small></span>
+    </a>
+    <nav class="nav">
+    <ul>
+    <li><a href="#" id="navMoviesBtn">Movies</a></li>
+    <li><a href="#" id="navSportsBtn">Sports</a></li>
+    <li><a href="#" id="navOffersBtn">Offers</a></li>
+    <li><a href="#" id="navEventsDetailsBtn">Events</a></li>
+    </ul>
+    </nav>
+    <div class="search-bar" id="searchBarWrapper" style="position: relative;">
+    <i class="fa-solid fa-magnifying-glass" id="globalSearchIcon"></i>
+    <input type="text" id="globalSearchInput" placeholder="Search movies, sports, events..." autocomplete="off">
+    <button id="globalSearchClear" style="display:none; background:none; border:none; color:var(--text-secondary); cursor:pointer; padding:0 4px; font-size:1rem;"><i class="fa-solid fa-xmark"></i></button>
+    <div id="searchResultsDropdown" style="display:none; position:absolute; top:calc(100% + 10px); left:50%; transform:translateX(-50%); width:480px; max-height:480px; overflow-y:auto; background:rgba(10,18,40,0.98); border:1px solid rgba(59,130,246,0.3); border-radius:20px; padding:10px 0; z-index:9999; backdrop-filter:blur(30px); box-shadow:0 25px 70px rgba(0,0,0,0.7);"></div>
+    </div>
+    <div class="user-actions">
+    <div class="location">
+                    <i class="fa-solid fa-location-dot"></i>
+                    <span class="location-fixed">Kolkata</span>
+                </div>
+    <button class="theme-toggle" id="themeToggle">
+    <i class="fa-solid fa-moon"></i>
+    <i class="fa-solid fa-sun"></i>
+    </button>
+    <button class="btn-login" id="loginBtn">LogIn</button>
+    <button class="btn-signup" id="signupBtn">SignUp</button>
+    </div>
+    </header>
+    <main>
+    <!-- Hero Carousel -->
+    <section class="hero-carousel">
+    <div class="carousel-container">
+    <button class="carousel-btn prev" id="prevBtn"><i class="fa-solid fa-chevron-left"></i></button>
+    <div class="carousel-track" id="carouselTrack">
+    <!-- Slide 1: Dhurandhar Movie -->
+    <div class="carousel-slide active">
+    <img src="https://images.unsplash.com/photo-1536440136628-849c177e76a1?auto=format&fit=crop&q=80&w=1400" alt="Dhurandhar Official Landscape Poster">
+    <div class="slide-content">
+    <span class="badge">&#127916; Blockbuster Event &middot; Action Thriller</span>
+    <h1>DHURANDHAR</h1>
+    <p>Nature's fury meets human will. Experience the most ambitious action masterpiece that is taking the world by storm.</p>
+    <button class="btn-book">Book Now</button>
+    </div>
+    </div>
+    <!-- Slide 2: IPL 2026 -->
+    <div class="carousel-slide">
+    <img src="https://images.unsplash.com/photo-1540747913346-19e32dc3e97e?auto=format&fit=crop&q=80&w=1400" alt="IPL 2026 Season Official Header">
+    <div class="slide-content">
+    <span class="badge">&#127967; Sports Sensation &middot; T20 Cricket</span>
+    <h1>IPL 2026</h1>
+    <p>The ultimate cricket carnival returns! Watch the world's best cricketers battle for the coveted gold trophy in India.</p>
+    <button class="btn-book">Book Now</button>
+    </div>
+    </div>
+    <!-- Slide 3: Global Music Fest 2026 -->
+    <div class="carousel-slide">
+    <img src="https://images.unsplash.com/photo-1470225620780-dba8ba36b745?auto=format&fit=crop&q=80&w=1400" alt="Global Music Fest 2026 Landscape Poster">
+    <div class="slide-content">
+    <span class="badge">&#127925; Live Concert &middot; World Tour</span>
+    <h1>GLOBAL MUSIC FEST 2026</h1>
+    <p>An immersive audio-visual experience with top international artists and breathtaking light shows under the midnight sky.</p>
+    </div>
+    </div>
+    </div>
+    <button class="carousel-btn next" id="nextBtn"><i class="fa-solid fa-chevron-right"></i></button>
+    </div>
+    <div class="carousel-dots" id="carouselDots">
+    <span class="dot active" data-index="0"></span>
+    <span class="dot" data-index="1"></span>
+    <span class="dot" data-index="2"></span>
+    </div>
+    </section>
+    <!-- Main Content Area -->
+    <div class="content-layout">
+    <div class="main-sections">
+    <!-- Movies Section -->
+    <section class="section-movies">
+    <div class="section-header">
+    <h2>Now Showing: Movies</h2>
+    <a href="#" class="see-all" id="seeAllMoviesBtn">See all <i class="fa-solid fa-chevron-right"></i></a>
+    </div>
+    <div class="movie-grid">
+    <div class="movie-card" data-language="Hindi" data-genres="Action, Thriller" data-price="350" >
+    <img src="https://m.media-amazon.com/images/M/MV5BMzFiNTVkZjYtM2I3Yi00MGNjLWEyYTAtMGViNGExZmMzMGMzXkEyXkFqcGc@._V1_.jpg" alt="DHURANDHAR: THE REVENGE">
+    <div class="movie-info">
+    <h3>DHURANDHAR: THE REVENGE </h3>
+    <p class="meta">Hindi • Action, Thriller &bull; 2h 15m</p>
+    <button class="btn-book-sm">Book Now</button>
+    </div>
+    </div>
+    <div class="movie-card" data-language="Hindi" data-genres="Action, Thriller" data-price="650" >
+    <img src="https://m.media-amazon.com/images/M/MV5BMGExNGI1NDktOWI2Mi00NDM3LWIxMmQtNTQxYTgzMzI0MTA1XkEyXkFqcGc@._V1_.jpg" alt="Jawan">
+    <div class="movie-info">
+    <h3>JAWAN </h3>
+    <p class="meta">Hindi • Action, Thriller &bull; 2h 49m</p>
+    <button class="btn-book-sm">Book Now</button>
+    </div>
+    </div>
+    <!-- 2 -->
+    <div class="movie-card" data-language="Bengali" data-genres="Action, Drama" data-price="950" data-format="IMAX ">
+    <img src="https://m.media-amazon.com/images/M/MV5BZThhODU4NTQtZGUzMS00YTkyLTgyZjktNmYwNzhmNjQ3NmY3XkEyXkFqcGc@._V1_.jpg" alt="KHADAAN">
+    <div class="movie-info">
+    <h3>KHADAAN </h3>
+    <p class="meta">Bengali • Action, Drama &bull; 2h 30m</p>
+    <button class="btn-book-sm">Book Now</button>
+    </div>
+    </div>
+    <!-- 42 -->
+    <div class="movie-card" data-language="Telugu" data-genres="Action, Historical" data-price="1250" >
+    <img src="https://m.media-amazon.com/images/M/MV5BNTRhYTlhZTgtYmMyYy00NWI4LTk4MzItOWM2YjBmYTg2OTI2XkEyXkFqcGc@._V1_.jpg" alt="Baahubali 2">
+    <div class="movie-info">
+    <h3>BAAHUBALI 2 </h3>
+    <p class="meta">Telugu • Action, Historical &bull; 2h 47m</p>
+    <button class="btn-book-sm">Book Now</button>
+    </div>
+    </div>
+    <!-- 7 -->
+    <div class="movie-card extra-movie" data-language="Hindi" data-genres="Action, Drama" data-price="1600" style="display: none;">
+    <img src="https://m.media-amazon.com/images/M/MV5BZThmNDg1NjUtNWJhMC00YjA3LWJiMjItNmM4ZDQ5ZGZiN2Y2XkEyXkFqcGc@._V1_.jpg" alt="Animal">
+    <div class="movie-info">
+    <h3>ANIMAL </h3>
+    <p class="meta">Hindi • Action, Drama &bull; 3h 21m</p>
+    <button class="btn-book-sm">Book Now</button>
+    </div>
+    </div>
+    <!-- 3 -->
+    <div class="movie-card extra-movie" data-language="Telugu" data-genres="Action, Historical" data-price="350" style="display: none;">
+    <img src="https://m.media-amazon.com/images/M/MV5BNWMwODYyMjQtMTczMi00NTQ1LWFkYjItMGJhMWRkY2E3NDAyXkEyXkFqcGc@._V1_.jpg" alt="RRR">
+    <div class="movie-info">
+    <h3>RRR </h3>
+    <p class="meta">Telugu • Action, Historical &bull; 3h 5m</p>
+    <button class="btn-book-sm">Book Now</button>
+    </div>
+    </div>
+    <!-- 4 -->
+    <div class="movie-card extra-movie" data-language="Hindi" data-genres="Action, Thriller" data-price="650" data-format="IMAX " style="display: none;">
+    <img src="https://m.media-amazon.com/images/M/MV5BNDdkNTY1MDQtY2I5MC00OTFlLTg5OWQtZWE2YzE5NWFiMDgzXkEyXkFqcGc@._V1_.jpg" alt="Pathaan">
+    <div class="movie-info">
+    <h3>PATHAAN </h3>
+    <p class="meta">Hindi • Action, Thriller &bull; 2h 26m</p>
+    <button class="btn-book-sm">Book Now</button>
+    </div>
+    </div>
+    <!-- 5 -->
+    <div class="movie-card extra-movie" data-language="Kannada" data-genres="Action, Crime" data-price="950" style="display: none;">
+    <img src="https://m.media-amazon.com/images/M/MV5BZmQzZjVkZTUtYjI4ZC00ZDJmLWI0ZDUtZTFmMGM1Mzc5ZjIyXkEyXkFqcGc@._V1_.jpg" alt="KGF: Chapter 2">
+    <div class="movie-info">
+    <h3>KGF: CHAPTER 2 </h3>
+    <p class="meta">Kannada • Action, Crime &bull; 2h 48m</p>
+    <button class="btn-book-sm">Book Now</button>
+    </div>
+    </div>
+    <!-- 6 -->
+    <div class="movie-card extra-movie" data-language="Hindi" data-genres="Biopic, Drama" data-price="1250" style="display: none;">
+    <img src="https://m.media-amazon.com/images/M/MV5BMTQ4MzQzMzM2Nl5BMl5BanBnXkFtZTgwMTQ1NzU3MDI@._V1_.jpg" alt="Dangal">
+    <div class="movie-info">
+    <h3>DANGAL </h3>
+    <p class="meta">Hindi • Biopic, Drama &bull; 2h 41m</p>
+    <button class="btn-book-sm">Book Now</button>
+    </div>
+    </div>
+    <!-- 8 -->
+    <div class="movie-card extra-movie" data-language="Telugu" data-genres="Action, Drama" data-price="1600" style="display: none;">
+    <img src="https://m.media-amazon.com/images/M/MV5BNDM3N2UzM2UtMjEwMC00NGUzLThmMmQtNGMyM2VmMDA0ZWEwXkEyXkFqcGc@._V1_.jpg" alt="Pushpa">
+    <div class="movie-info">
+    <h3>PUSHPA </h3>
+    <p class="meta">Telugu • Action, Drama &bull; 2h 59m</p>
+    <button class="btn-book-sm">Book Now</button>
+    </div>
+    </div>
+    <!-- 9 -->
+    <div class="movie-card extra-movie" data-language="Hindi" data-genres="Action, Adventure" data-price="350" data-format="IMAX " style="display: none;">
+    <img src="https://m.media-amazon.com/images/M/MV5BZjZiOTE2Y2ItMTY4My00ZjE0LTlkZTAtYWY4M2I4OTVkMjQ5XkEyXkFqcGc@._V1_.jpg" alt="Brahmastra">
+    <div class="movie-info">
+    <h3>BRAHMASTRA </h3>
+    <p class="meta">Hindi • Action, Adventure &bull; 2h 47m</p>
+    <button class="btn-book-sm">Book Now</button>
+    </div>
+    </div>
+    <!-- 10 -->
+    <div class="movie-card extra-movie" data-language="Tamil" data-genres="Action, Thriller" data-price="650" style="display: none;">
+    <img src="https://m.media-amazon.com/images/M/MV5BNDEyMWQ0ZDktNTY0MC00YWRkLWFlMjQtMDUxMjRlMDhmMmRlXkEyXkFqcGc@._V1_.jpg" alt="Vikram">
+    <div class="movie-info">
+    <h3>VIKRAM </h3>
+    <p class="meta">Tamil • Action, Thriller &bull; 2h 55m</p>
+    <button class="btn-book-sm">Book Now</button>
+    </div>
+    </div>
+    <!-- 11 -->
+    <div class="movie-card extra-movie" data-language="English" data-genres="Biopic, Drama" data-price="950" style="display: none;">
+    <img src="https://m.media-amazon.com/images/M/MV5BN2JkMDc5MGQtZjg3YS00NmFiLWIyZmQtZTJmNTM5MjVmYTQ4XkEyXkFqcGc@._V1_.jpg" alt="Oppenheimer">
+    <div class="movie-info">
+    <h3>OPPENHEIMER </h3>
+    <p class="meta">English • Biopic, Drama &bull; 3h 0m</p>
+    <button class="btn-book-sm">Book Now</button>
+    </div>
+    </div>
+    <!-- 12 -->
+    <div class="movie-card extra-movie" data-language="English" data-genres="Sci-Fi, Adventure" data-price="1250" style="display: none;">
+    <img src="https://m.media-amazon.com/images/M/MV5BNTc0YmQxMjEtODI5MC00NjFiLTlkMWUtOGQ5NjFmYWUyZGJhXkEyXkFqcGc@._V1_.jpg" alt="Dune: Part Two">
+    <div class="movie-info">
+    <h3>DUNE: PART TWO </h3>
+    <p class="meta">English • Sci-Fi, Adventure &bull; 2h 46m</p>
+    <button class="btn-book-sm">Book Now</button>
+    </div>
+    </div>
+    <!-- 13 -->
+    <div class="movie-card extra-movie" data-language="English" data-genres="Sci-Fi, Action" data-price="1600" data-format="IMAX " style="display: none;">
+    <img src="https://m.media-amazon.com/images/M/MV5BNWI0Y2NkOWEtMmM2OC00MjQ3LWI1YzItZGQxYzQ3NzI4NWZmXkEyXkFqcGc@._V1_.jpg" alt="Avatar: The Way of Water">
+    <div class="movie-info">
+    <h3>AVATAR: THE WAY OF WATER </h3>
+    <p class="meta">English • Sci-Fi, Action &bull; 3h 12m</p>
+    <button class="btn-book-sm">Book Now</button>
+    </div>
+    </div>
+    <!-- 14 -->
+    <div class="movie-card extra-movie" data-language="English" data-genres="Action, Crime" data-price="350" style="display: none;">
+    <img src="https://m.media-amazon.com/images/M/MV5BMmU5NGJlMzAtMGNmOC00YjJjLTgyMzUtNjAyYmE4Njg5YWMyXkEyXkFqcGc@._V1_.jpg" alt="The Batman">
+    <div class="movie-info">
+    <h3>THE BATMAN </h3>
+    <p class="meta">English • Action, Crime &bull; 2h 56m</p>
+    <button class="btn-book-sm">Book Now</button>
+    </div>
+    </div>
+    <!-- 15 -->
+    <div class="movie-card extra-movie" data-language="English" data-genres="Animation, Action" data-price="650" style="display: none;">
+    <img src="https://m.media-amazon.com/images/M/MV5BNThiZjA3MjItZGY5Ni00ZmJhLWEwN2EtOTBlYTA4Y2E0M2ZmXkEyXkFqcGc@._V1_.jpg" alt="Across the Spider-Verse">
+    <div class="movie-info">
+    <h3>ACROSS THE SPIDER-VERSE </h3>
+    <p class="meta">English • Animation, Action &bull; 2h 20m</p>
+    <button class="btn-book-sm">Book Now</button>
+    </div>
+    </div>
+    <!-- 16 -->
+    <div class="movie-card extra-movie" data-language="English" data-genres="Action, Drama" data-price="950" style="display: none;">
+    <img src="https://m.media-amazon.com/images/M/MV5BMDBkZDNjMWEtOTdmMi00NmExLTg5MmMtNTFlYTJlNWY5YTdmXkEyXkFqcGc@._V1_.jpg" alt="Top Gun: Maverick">
+    <div class="movie-info">
+    <h3>TOP GUN: MAVERICK </h3>
+    <p class="meta">English • Action, Drama &bull; 2h 10m</p>
+    <button class="btn-book-sm">Book Now</button>
+    </div>
+    </div>
+    <!-- 17 -->
+    <div class="movie-card extra-movie" data-language="English" data-genres="Action, Thriller" data-price="1250" data-format="IMAX " style="display: none;">
+    <img src="https://m.media-amazon.com/images/M/MV5BY2Q2ZmI5ZjUtNWVhMC00YzJkLTlmYjMtY2RmZDhkNzEzYjZhXkEyXkFqcGc@._V1_.jpg" alt="John Wick: Chapter 4">
+    <div class="movie-info">
+    <h3>JOHN WICK: CHAPTER 4 </h3>
+    <p class="meta">English • Action, Thriller &bull; 2h 49m</p>
+    <button class="btn-book-sm">Book Now</button>
+    </div>
+    </div>
+    <!-- 18 -->
+    <div class="movie-card extra-movie" data-language="English" data-genres="Comedy" data-price="1600" style="display: none;">
+    <img src="https://m.media-amazon.com/images/M/MV5BYjI3NDU0ZGYtYjA2YS00Y2RlLTgwZDAtYTE2YTM5ZjE1M2JlXkEyXkFqcGc@._V1_.jpg" alt="Barbie">
+    <div class="movie-info">
+    <h3>BARBIE </h3>
+    <p class="meta">English • Comedy &bull; 1h 54m</p>
+    <button class="btn-book-sm">Book Now</button>
+    </div>
+    </div>
+    <!-- 19 -->
+    <div class="movie-card extra-movie" data-language="English" data-genres="Action, Thriller" data-price="350" style="display: none;">
+    <img src="https://m.media-amazon.com/images/M/MV5BN2U4OTdmM2QtZTkxYy00ZmQyLTg2N2UtMDdmMGJmNDhlZDU1XkEyXkFqcGc@._V1_.jpg" alt="Mission: Impossible">
+    <div class="movie-info">
+    <h3>MISSION: IMPOSSIBLE </h3>
+    <p class="meta">English • Action, Thriller &bull; 2h 43m</p>
+    <button class="btn-book-sm">Book Now</button>
+    </div>
+    </div>
+    <!-- 20 -->
+    <div class="movie-card extra-movie" data-language="English" data-genres="Sci-Fi, Thriller" data-price="650" style="display: none;">
+    <img src="https://m.media-amazon.com/images/M/MV5BMjAxMzY3NjcxNF5BMl5BanBnXkFtZTcwNTI5OTM0Mw@@._V1_.jpg" alt="Inception">
+    <div class="movie-info">
+    <h3>INCEPTION </h3>
+    <p class="meta">English • Sci-Fi, Thriller &bull; 2h 28m</p>
+    <button class="btn-book-sm">Book Now</button>
+    </div>
+    </div>
+    <!-- 21 -->
+    <div class="movie-card extra-movie" data-language="Kannada" data-genres="Action, Thriller" data-price="950" data-format="IMAX " style="display: none;">
+    <img src="https://m.media-amazon.com/images/M/MV5BY2VkZjk5ZjMtM2ExOS00ZDA1LTg1ZDEtYTliNGZiYTc4ZWZiXkEyXkFqcGc@._V1_.jpg" alt="KANTARA">
+    <div class="movie-info">
+    <h3>KANTARA </h3>
+    <p class="meta">Kannada • Action, Thriller &bull; 2h 28m</p>
+    <button class="btn-book-sm">Book Now</button>
+    </div>
+    </div>
+    <!-- 22 -->
+    <div class="movie-card extra-movie" data-language="Hindi" data-genres="Comedy, Drama" data-price="1250" style="display: none;">
+    <img src="https://m.media-amazon.com/images/M/MV5BNzc4ZWQ3NmYtODE0Ny00YTQ4LTlkZWItNTBkMGQ0MmUwMmJlXkEyXkFqcGc@._V1_.jpg" alt="3 IDIOTS">
+    <div class="movie-info">
+    <h3>3 IDIOTS </h3>
+    <p class="meta">Hindi • Comedy, Drama &bull; 2h 50m</p>
+    <button class="btn-book-sm">Book Now</button>
+    </div>
+    </div>
+    <!-- 23 -->
+    <div class="movie-card extra-movie" data-language="Hindi" data-genres="Comedy, Sci-Fi" data-price="1600" style="display: none;">
+    <img src="https://m.media-amazon.com/images/M/MV5BMTYzOTE2NjkxN15BMl5BanBnXkFtZTgwMDgzMTg0MzE@._V1_.jpg" alt="PK">
+    <div class="movie-info">
+    <h3>PK </h3>
+    <p class="meta">Hindi • Comedy, Sci-Fi &bull; 2h 33m</p>
+    <button class="btn-book-sm">Book Now</button>
+    </div>
+    </div>
+    <!-- 24 -->
+    <div class="movie-card extra-movie" data-language="Hindi" data-genres="Romance, Drama" data-price="350" style="display: none;">
+    <img src="https://m.media-amazon.com/images/M/MV5BNjU5ZTljMDEtNzg5Ny00OTliLWI3NmYtOTE1ZDg3NTNkMDM0XkEyXkFqcGc@._V1_.jpg" alt="KABIR SINGH">
+    <div class="movie-info">
+    <h3>KABIR SINGH </h3>
+    <p class="meta">Hindi • Romance, Drama &bull; 2h 52m</p>
+    <button class="btn-book-sm">Book Now</button>
+    </div>
+    </div>
+    <!-- 25 -->
+    <div class="movie-card extra-movie" data-language="Hindi" data-genres="Action, Adventure" data-price="650" data-format="IMAX " style="display: none;">
+    <img src="https://m.media-amazon.com/images/M/MV5BNmI1NTRmMWQtNDJlZC00MGIzLWEwYzctYTQwNTI2NWNjM2MwXkEyXkFqcGc@._V1_.jpg" alt="SHOLAY">
+    <div class="movie-info">
+    <h3>SHOLAY </h3>
+    <p class="meta">Hindi • Action, Adventure &bull; 3h 24m</p>
+    <button class="btn-book-sm">Book Now</button>
+    </div>
+    </div>
+    <!-- 26 -->
+    <div class="movie-card extra-movie" data-language="Hindi" data-genres="Comedy, Drama" data-price="950" style="display: none;">
+    <img src="https://m.media-amazon.com/images/M/MV5BYzVjMjZiNGUtZjZiNy00Yzg4LWEzYzYtMmI1NDg5NWNiNjUwXkEyXkFqcGc@._V1_.jpg" alt="BAJRANGI BHAIJAAN">
+    <div class="movie-info">
+    <h3>BAJRANGI BHAIJAAN </h3>
+    <p class="meta">Hindi • Comedy, Drama &bull; 2h 43m</p>
+    <button class="btn-book-sm">Book Now</button>
+    </div>
+    </div>
+    <!-- 27 -->
+    <div class="movie-card extra-movie" data-language="Hindi" data-genres="Drama, Historical" data-price="1250" style="display: none;">
+    <img src="https://m.media-amazon.com/images/M/MV5BM2FmODM4OTktOTRjOS00ZTIzLWIzZjAtMDBhOGEzYThkNzMzXkEyXkFqcGc@._V1_.jpg" alt="LAGAAN">
+    <div class="movie-info">
+    <h3>LAGAAN </h3>
+    <p class="meta">Hindi • Drama, Historical &bull; 3h 44m</p>
+    <button class="btn-book-sm">Book Now</button>
+    </div>
+    </div>
+    <!-- 28 -->
+    <div class="movie-card extra-movie" data-language="Malayalam" data-genres="Thriller, Mystery" data-price="1600" style="display: none;">
+    <img src="https://m.media-amazon.com/images/M/MV5BM2MwMjNlNjctYjA2ZS00ZDA4LWJmNTYtODg5NDY1YzQzZDg2XkEyXkFqcGc@._V1_.jpg" alt="DRISHYAM">
+    <div class="movie-info">
+    <h3>DRISHYAM </h3>
+    <p class="meta">Malayalam • Thriller, Mystery &bull; 2h 40m</p>
+    <button class="btn-book-sm">Book Now</button>
+    </div>
+    </div>
+    <!-- 29 -->
+    <div class="movie-card extra-movie" data-language="Tamil" data-genres="Action, Thriller" data-price="350" data-format="IMAX " style="display: none;">
+    <img src="https://m.media-amazon.com/images/M/MV5BNDhmMWI0OWEtNTY3My00MjcxLTgwNDItMTgzYmJkMWQyMzg0XkEyXkFqcGc@._V1_.jpg" alt="THUPPAKKI">
+    <div class="movie-info">
+    <h3>THUPPAKKI </h3>
+    <p class="meta">Tamil • Action, Thriller &bull; 2h 50m</p>
+    <button class="btn-book-sm">Book Now</button>
+    </div>
+    </div>
+    <!-- 30 -->
+    <div class="movie-card extra-movie" data-language="Tamil" data-genres="Action, Drama" data-price="650" style="display: none;">
+    <img src="https://m.media-amazon.com/images/M/MV5BYjgyMGFlNmMtYzkzNy00ZjgyLTljNTItMTg4MmNjYWE5NDM4XkEyXkFqcGc@._V1_.jpg" alt="ASURAN">
+    <div class="movie-info">
+    <h3>ASURAN </h3>
+    <p class="meta">Tamil • Action, Drama &bull; 2h 21m</p>
+    <button class="btn-book-sm">Book Now</button>
+    </div>
+    </div>
+    <!-- 31 -->
+    <div class="movie-card extra-movie" data-language="English" data-genres="Action, Crime" data-price="950" style="display: none;">
+    <img src="https://m.media-amazon.com/images/M/MV5BMTMxNTMwODM0NF5BMl5BanBnXkFtZTcwODAyMTk2Mw@@._V1_.jpg" alt="THE DARK KNIGHT">
+    <div class="movie-info">
+    <h3>THE DARK KNIGHT </h3>
+    <p class="meta">English • Action, Crime &bull; 2h 32m</p>
+    <button class="btn-book-sm">Book Now</button>
+    </div>
+    </div>
+    <!-- 32 -->
+    <div class="movie-card extra-movie" data-language="English" data-genres="Sci-Fi, Drama" data-price="1250" style="display: none;">
+    <img src="https://m.media-amazon.com/images/M/MV5BYzdjMDAxZGItMjI2My00ODA1LTlkNzItOWFjMDU5ZDJlYWY3XkEyXkFqcGc@._V1_.jpg" alt="INTERSTELLAR">
+    <div class="movie-info">
+    <h3>INTERSTELLAR </h3>
+    <p class="meta">English • Sci-Fi, Drama &bull; 2h 49m</p>
+    <button class="btn-book-sm">Book Now</button>
+    </div>
+    </div>
+    <!-- 33 -->
+    <div class="movie-card extra-movie" data-language="English" data-genres="Action, Sci-Fi" data-price="1600" data-format="IMAX " style="display: none;">
+    <img src="https://m.media-amazon.com/images/M/MV5BMTc5MDE2ODcwNV5BMl5BanBnXkFtZTgwMzI2NzQ2NzM@._V1_.jpg" alt="AVENGERS ENDGAME">
+    <div class="movie-info">
+    <h3>AVENGERS ENDGAME </h3>
+    <p class="meta">English • Action, Sci-Fi &bull; 3h 1m</p>
+    <button class="btn-book-sm">Book Now</button>
+    </div>
+    </div>
+    <!-- 34 -->
+    <div class="movie-card extra-movie" data-language="English" data-genres="Sci-Fi, Action" data-price="350" style="display: none;">
+    <img src="https://m.media-amazon.com/images/M/MV5BZDc5MGM1MDYtY2ZlZC00YWI3LTk3OGUtYjBlZGFiYTE1MGJhXkEyXkFqcGc@._V1_.jpg" alt="THE MATRIX">
+    <div class="movie-info">
+    <h3>THE MATRIX </h3>
+    <p class="meta">English • Sci-Fi, Action &bull; 2h 16m</p>
+    <button class="btn-book-sm">Book Now</button>
+    </div>
+    </div>
+    <!-- 35 -->
+    <div class="movie-card extra-movie" data-language="English" data-genres="Romance, Drama" data-price="650" style="display: none;">
+    <img src="https://m.media-amazon.com/images/M/MV5BYzYyN2FiZmUtYWYzMy00MzViLWJkZTMtOGY1ZjgzNWMwN2YxXkEyXkFqcGc@._V1_.jpg" alt="TITANIC">
+    <div class="movie-info">
+    <h3>TITANIC </h3>
+    <p class="meta">English • Romance, Drama &bull; 3h 14m</p>
+    <button class="btn-book-sm">Book Now</button>
+    </div>
+    </div>
+    <!-- 36 -->
+    <div class="movie-card extra-movie" data-language="English" data-genres="Action, Drama" data-price="950" style="display: none;">
+    <img src="https://m.media-amazon.com/images/M/MV5BYWQ4YmNjYjEtOWE1Zi00Y2U4LWI4NTAtMTU0MjkxNWQ1ZmJiXkEyXkFqcGc@._V1_.jpg" alt="GLADIATOR">
+    <div class="movie-info">
+    <h3>GLADIATOR </h3>
+    <p class="meta">English • Action, Drama &bull; 2h 35m</p>
+    <button class="btn-book-sm">Book Now</button>
+    </div>
+    </div>
+    <!-- 37 -->
+    <div class="movie-card extra-movie" data-language="English" data-genres="Sci-Fi, Adventure" data-price="1250" data-format="IMAX " style="display: none;">
+    <img src="https://m.media-amazon.com/images/M/MV5BMjM2MDgxMDg0Nl5BMl5BanBnXkFtZTgwNTM2OTM5NDE@._V1_.jpg" alt="JURASSIC PARK">
+    <div class="movie-info">
+    <h3>JURASSIC PARK </h3>
+    <p class="meta">English • Sci-Fi, Adventure &bull; 2h 7m</p>
+    <button class="btn-book-sm">Book Now</button>
+    </div>
+    </div>
+    <!-- 38 -->
+    <div class="movie-card extra-movie" data-language="English" data-genres="Adventure" data-price="1600" style="display: none;">
+    <img src="https://m.media-amazon.com/images/M/MV5BNzIxMDQ2YTctNDY4MC00ZTRhLTk4ODQtMTVlOWY4NTdiYmMwXkEyXkFqcGc@._V1_.jpg" alt="LORD OF THE RINGS">
+    <div class="movie-info">
+    <h3>LORD OF THE RINGS </h3>
+    <p class="meta">English • Adventure &bull; 2h 58m</p>
+    <button class="btn-book-sm">Book Now</button>
+    </div>
+    </div>
+    <!-- 39 -->
+    <div class="movie-card extra-movie" data-language="English" data-genres="Action, Comedy" data-price="350" style="display: none;">
+    <img src="https://m.media-amazon.com/images/M/MV5BNzY3ZWU5NGQtOTViNC00ZWVmLTliNjAtNzViNzlkZWQ4YzQ4XkEyXkFqcGc@._V1_.jpg" alt="DEADPOOL">
+    <div class="movie-info">
+    <h3>DEADPOOL </h3>
+    <p class="meta">English • Action, Comedy &bull; 1h 48m</p>
+    <button class="btn-book-sm">Book Now</button>
+    </div>
+    </div>
+    <!-- 40 -->
+    <div class="movie-card extra-movie" data-language="English" data-genres="Action, Sci-Fi" data-price="650" style="display: none;">
+    <img src="https://m.media-amazon.com/images/M/MV5BMmFiZGZjMmEtMTA0Ni00MzA2LTljMTYtZGI2MGJmZWYzZTQ2XkEyXkFqcGc@._V1_.jpg" alt="SPIDER MAN NO WAY HOME">
+    <div class="movie-info">
+    <h3>SPIDER MAN NO WAY HOME </h3>
+    <p class="meta">English • Action, Sci-Fi &bull; 2h 28m</p>
+    <button class="btn-book-sm">Book Now</button>
+    </div>
+    </div>
+    <!-- 41 -->
+    <div class="movie-card extra-movie" data-language="Bengali" data-genres="Historical, Action" data-price="950" data-format="IMAX " style="display: none;">
+    <img src="https://m.media-amazon.com/images/M/MV5BNDkwNGY0MTItZTcyOC00MDYwLTllYzMtOTA0MmYyMTUzMmYyXkEyXkFqcGc@._V1_.jpg" alt="RAGHU DAKAT">
+    <div class="movie-info">
+    <h3>RAGHU DAKAT </h3>
+    <p class="meta">Bengali • Historical, Action &bull; 2h 20m</p>
+    <button class="btn-book-sm">Book Now</button>
+    </div>
+    </div>
+    <!-- 43 -->
+    <div class="movie-card extra-movie" data-language="Bengali" data-genres="Family, Drama" data-price="1250" style="display: none;">
+    <img src="https://m.media-amazon.com/images/M/MV5BZDE5MDM5ZmMtNWZiNC00ZGFjLTgwZDMtMTAzOTk1ZWEzNzQ4XkEyXkFqcGc@._V1_.jpg" alt="PROJAPATI 2">
+    <div class="movie-info">
+    <h3>PROJAPATI 2 </h3>
+    <p class="meta">Bengali • Family, Drama &bull; 2h 21m</p>
+    <button class="btn-book-sm">Book Now</button>
+    </div>
+    </div>
+    <!-- 44 -->
+    <div class="movie-card extra-movie" data-language="Bengali" data-genres="Adventure, Mystery" data-price="1600" style="display: none;">
+    <img src="https://m.media-amazon.com/images/M/MV5BYzhkYmQ0N2UtNGU0NS00NzlmLTkzMTQtYTBiMzBhMmZkZjQzXkEyXkFqcGc@._V1_.jpg" alt="KAKABABU">
+    <div class="movie-info">
+    <h3>KAKABABU </h3>
+    <p class="meta">Bengali • Adventure, Mystery &bull; 2h 8m</p>
+    <button class="btn-book-sm">Book Now</button>
+    </div>
+    </div>
+    </div>
+    </section>
+    <!-- Featured Sports Section -->
+    <section class="section-events" id="featured-sports-section" style="margin-top: 50px;">
+    <div class="section-header" style="display:flex; justify-content:space-between; align-items:flex-end; margin-bottom: 20px;">
+    <h2 style="font-size: 1.5rem; font-weight: 600;">Upcoming Sports Events</h2>
+    <a href="#" class="see-all" id="seeAllSportsLink" style="color: var(--accent-color); text-decoration: none; font-weight: 600; font-size: 0.95rem;">View All Sports <i class="fa-solid fa-chevron-right"></i></a>
+    </div>
+    <div class="sports-grid" style="display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 20px;">
+    <div class="event-card" data-category="Other" data-language="English" data-price="0" style="background: var(--card-bg); border-radius: 15px; overflow: hidden; display: flex; flex-direction: column;">
+    <div class="event-img-container" style="height: 350px; position: relative;">
+    <img src="https://images.unsplash.com/photo-1540747913346-19e32dc3e97e?auto=format&fit=crop&q=80&w=600" alt="INDIAN PREMIER LEAGUE" style="height: 100%; width: 100%; object-fit: cover;">
+    </div>
+    <div class="event-details" style="padding: 15px; display: flex; flex-direction: column; gap: 8px; flex-grow: 1;">
+    <h3 style="font-size: 1rem;">INDIAN PREMIER LEAGUE </h3>
+    <p class="meta" style="color: var(--text-secondary); font-size: 0.85rem;">T20 Cricket</p>
+    <div class="date-row" style="display: flex; gap: 15px; color: var(--text-primary); font-size: 0.9rem; align-items: center; margin-top: 5px; margin-bottom: 10px;">
+    <div style="display: flex; gap: 5px; align-items: center;">
+    <i class="fa-regular fa-calendar" style="color: var(--accent-color);"></i>
+    <span>May 25</span>
+    </div>
+    <div style="display: flex; gap: 5px; align-items: center;">
+    <i class="fa-regular fa-clock" style="color: var(--accent-color);"></i>
+    <span>19:30 IST</span>
+    </div>
+    </div>
+    <button class="btn-book-sm" style="width: 100%; margin-top: auto;">Book Now</button>
+    </div>
+    </div>
+    <div class="event-card" data-category="Other" data-language="English" data-price="0" style="background: var(--card-bg); border-radius: 15px; overflow: hidden; display: flex; flex-direction: column;">
+    <div class="event-img-container" style="height: 350px; position: relative;">
+    <img src="https://images.unsplash.com/photo-1624526267942-ab0ff8a3e972?auto=format&fit=crop&q=80&w=600" alt="ICC T20 WORLD CUP" style="height: 100%; width: 100%; object-fit: cover;">
+    </div>
+    <div class="event-details" style="padding: 15px; display: flex; flex-direction: column; gap: 8px; flex-grow: 1;">
+    <h3 style="font-size: 1rem;">ICC T20 WORLD CUP </h3>
+    <p class="meta" style="color: var(--text-secondary); font-size: 0.85rem;">International Cricket</p>
+    <div class="date-row" style="display: flex; gap: 15px; color: var(--text-primary); font-size: 0.9rem; align-items: center; margin-top: 5px; margin-bottom: 10px;">
+    <div style="display: flex; gap: 5px; align-items: center;">
+    <i class="fa-regular fa-calendar" style="color: var(--accent-color);"></i>
+    <span>Jun 1</span>
+    </div>
+    <div style="display: flex; gap: 5px; align-items: center;">
+    <i class="fa-regular fa-clock" style="color: var(--accent-color);"></i>
+    <span>20:00 EST</span>
+    </div>
+    </div>
+    <button class="btn-book-sm" style="width: 100%; margin-top: auto;">Book Now</button>
+    </div>
+    </div>
+    <div class="event-card" data-category="Other" data-language="English" data-price="0" style="background: var(--card-bg); border-radius: 15px; overflow: hidden; display: flex; flex-direction: column;">
+    <div class="event-img-container" style="height: 350px; position: relative;">
+    <img src="https://images.unsplash.com/photo-1486286701208-1d58e9338013?auto=format&fit=crop&q=80&w=600" alt="FIFA WORLD CUP" style="height: 100%; width: 100%; object-fit: cover;">
+    </div>
+    <div class="event-details" style="padding: 15px; display: flex; flex-direction: column; gap: 8px; flex-grow: 1;">
+    <h3 style="font-size: 1rem;">FIFA WORLD CUP </h3>
+    <p class="meta" style="color: var(--text-secondary); font-size: 0.85rem;">International Football</p>
+    <div class="date-row" style="display: flex; gap: 15px; color: var(--text-primary); font-size: 0.9rem; align-items: center; margin-top: 5px; margin-bottom: 10px;">
+    <div style="display: flex; gap: 5px; align-items: center;">
+    <i class="fa-regular fa-calendar" style="color: var(--accent-color);"></i>
+    <span>Jul 10</span>
+    </div>
+    <div style="display: flex; gap: 5px; align-items: center;">
+    <i class="fa-regular fa-clock" style="color: var(--accent-color);"></i>
+    <span>18:00 UTC</span>
+    </div>
+    </div>
+    <button class="btn-book-sm" style="width: 100%; margin-top: auto;">Book Now</button>
+    </div>
+    </div>
+    </div>
+    </section>
+    <!-- Advertisements Section -->
+    <section class="section-ads" id="ads-section" style="margin-top: 40px; margin-bottom: 20px;">
+    <div class="ads-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px;">
+    <div class="ad-banner" style="border-radius: 12px; overflow: hidden; position: relative; height: 160px; box-shadow: 0 4px 15px rgba(0,0,0,0.3); transition: transform 0.3s; cursor: pointer;" onmouseover="this.style.transform='scale(1.02)';" onmouseout="this.style.transform='scale(1)';">
+    <img src="https://images.unsplash.com/photo-1489599849927-2ee91cede3ba?auto=format&fit=crop&q=80&w=800" alt="Movie Ad" style="width: 100%; height: 100%; object-fit: cover; opacity: 0.6;">
+    <div style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: linear-gradient(to right, rgba(15,23,42,1), transparent); display: flex; flex-direction: column; justify-content: center; padding: 25px;">
+    <h3 style="color: white; font-size: 1.4rem; margin-bottom: 5px; font-weight: 700;">Blockbuster Deals </h3>
+    <p style="color: var(--accent-color); font-weight: 600; font-size: 1.1rem;">Up to 50% Off &bull; Movies</p>
+    </div>
+    </div>
+    <div class="ad-banner" style="border-radius: 12px; overflow: hidden; position: relative; height: 160px; box-shadow: 0 4px 15px rgba(0,0,0,0.3); transition: transform 0.3s; cursor: pointer;" onmouseover="this.style.transform='scale(1.02)';" onmouseout="this.style.transform='scale(1)';">
+    <img src="https://images.unsplash.com/photo-1540747913346-19e32dc3e97e?auto=format&fit=crop&q=80&w=800" alt="Sports Ad" style="width: 100%; height: 100%; object-fit: cover; opacity: 0.6;">
+    <div style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: linear-gradient(to right, rgba(15,23,42,1), transparent); display: flex; flex-direction: column; justify-content: center; padding: 25px;">
+    <h3 style="color: white; font-size: 1.4rem; margin-bottom: 5px; font-weight: 700;">Live Action Elite </h3>
+    <p style="color: var(--accent-color); font-weight: 600; font-size: 1.1rem;">Book VIP Seats &bull; Sports</p>
+    </div>
+    </div>
+    <div class="ad-banner" style="border-radius: 12px; overflow: hidden; position: relative; height: 160px; box-shadow: 0 4px 15px rgba(0,0,0,0.3); transition: transform 0.3s; cursor: pointer;" onmouseover="this.style.transform='scale(1.02)';" onmouseout="this.style.transform='scale(1)';">
+    <img src="https://images.unsplash.com/photo-1492684223066-81342ee5ff30?auto=format&fit=crop&q=80&w=800" alt="Events Ad" style="width: 100%; height: 100%; object-fit: cover; opacity: 0.6;">
+    <div style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: linear-gradient(to right, rgba(15,23,42,1), transparent); display: flex; flex-direction: column; justify-content: center; padding: 25px;">
+    <h3 style="color: white; font-size: 1.4rem; margin-bottom: 5px; font-weight: 700;">Exclusive Access </h3>
+    <p style="color: var(--accent-color); font-weight: 600; font-size: 1.1rem;">Early Bird Tickets &bull; Events</p>
+    </div>
+    </div>
+    </div>
+    </section>
+    <section class="section-events" id="sports-section" style="margin-top: 50px; display: none;">
+    <div class="section-header" style="display:flex; justify-content:space-between; align-items:flex-end; margin-bottom: 20px;">
+    <h2 style="font-size: 1.5rem; font-weight: 600;">Now Showing: Sports Events</h2>
+    </div>
+    <div class="sports-grid" style="display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 20px;">
+    <div class="event-card" data-category="Other" data-language="English" data-price="0" style="background: var(--card-bg); border-radius: 15px; overflow: hidden; display: flex; flex-direction: column;">
+    <div class="event-img-container" style="height: 350px; position: relative;">
+    <img src="https://images.unsplash.com/photo-1540747913346-19e32dc3e97e?auto=format&fit=crop&q=80&w=600" alt="INDIAN PREMIER LEAGUE" style="height: 100%; width: 100%; object-fit: cover;">
+    </div>
+    <div class="event-details" style="padding: 15px; display: flex; flex-direction: column; gap: 8px; flex-grow: 1;">
+    <h3 style="font-size: 1rem;">INDIAN PREMIER LEAGUE </h3>
+    <p class="meta" style="color: var(--text-secondary); font-size: 0.85rem;">T20 Cricket</p>
+    <div class="date-row" style="display: flex; gap: 15px; color: var(--text-primary); font-size: 0.9rem; align-items: center; margin-top: 5px; margin-bottom: 10px;">
+    <div style="display: flex; gap: 5px; align-items: center;">
+    <i class="fa-regular fa-calendar" style="color: var(--accent-color);"></i>
+    <span>May 25</span>
+    </div>
+    <div style="display: flex; gap: 5px; align-items: center;">
+    <i class="fa-regular fa-clock" style="color: var(--accent-color);"></i>
+    <span>19:30 IST</span>
+    </div>
+    </div>
+    <button class="btn-book-sm" style="width: 100%; margin-top: auto;">Book Now</button>
+    </div>
+    </div>
+    <div class="event-card" data-category="Other" data-language="English" data-price="0" style="background: var(--card-bg); border-radius: 15px; overflow: hidden; display: flex; flex-direction: column;">
+    <div class="event-img-container" style="height: 350px; position: relative;">
+    <img src="https://images.unsplash.com/photo-1624526267942-ab0ff8a3e972?auto=format&fit=crop&q=80&w=600" alt="ICC T20 WORLD CUP" style="height: 100%; width: 100%; object-fit: cover;">
+    </div>
+    <div class="event-details" style="padding: 15px; display: flex; flex-direction: column; gap: 8px; flex-grow: 1;">
+    <h3 style="font-size: 1rem;">ICC T20 WORLD CUP </h3>
+    <p class="meta" style="color: var(--text-secondary); font-size: 0.85rem;">International Cricket</p>
+    <div class="date-row" style="display: flex; gap: 15px; color: var(--text-primary); font-size: 0.9rem; align-items: center; margin-top: 5px; margin-bottom: 10px;">
+    <div style="display: flex; gap: 5px; align-items: center;">
+    <i class="fa-regular fa-calendar" style="color: var(--accent-color);"></i>
+    <span>Jun 1</span>
+    </div>
+    <div style="display: flex; gap: 5px; align-items: center;">
+    <i class="fa-regular fa-clock" style="color: var(--accent-color);"></i>
+    <span>20:00 EST</span>
+    </div>
+    </div>
+    <button class="btn-book-sm" style="width: 100%; margin-top: auto;">Book Now</button>
+    </div>
+    </div>
+    <div class="event-card" data-category="Other" data-language="English" data-price="0" style="background: var(--card-bg); border-radius: 15px; overflow: hidden; display: flex; flex-direction: column;">
+    <div class="event-img-container" style="height: 350px; position: relative;">
+    <img src="https://images.unsplash.com/photo-1486286701208-1d58e9338013?auto=format&fit=crop&q=80&w=600" alt="FIFA WORLD CUP" style="height: 100%; width: 100%; object-fit: cover;">
+    </div>
+    <div class="event-details" style="padding: 15px; display: flex; flex-direction: column; gap: 8px; flex-grow: 1;">
+    <h3 style="font-size: 1rem;">FIFA WORLD CUP </h3>
+    <p class="meta" style="color: var(--text-secondary); font-size: 0.85rem;">International Football</p>
+    <div class="date-row" style="display: flex; gap: 15px; color: var(--text-primary); font-size: 0.9rem; align-items: center; margin-top: 5px; margin-bottom: 10px;">
+    <div style="display: flex; gap: 5px; align-items: center;">
+    <i class="fa-regular fa-calendar" style="color: var(--accent-color);"></i>
+    <span>Jul 10</span>
+    </div>
+    <div style="display: flex; gap: 5px; align-items: center;">
+    <i class="fa-regular fa-clock" style="color: var(--accent-color);"></i>
+    <span>18:00 UTC</span>
+    </div>
+    </div>
+    <button class="btn-book-sm" style="width: 100%; margin-top: auto;">Book Now</button>
+    </div>
+    </div>
+    <div class="event-card" data-category="Other" data-language="English" data-price="0" style="background: var(--card-bg); border-radius: 15px; overflow: hidden; display: flex; flex-direction: column;">
+    <div class="event-img-container" style="height: 350px; position: relative;">
+    <img src="https://images.unsplash.com/photo-1595435934249-5df7ed86e1c0?auto=format&fit=crop&q=80&w=600" alt="WIMBLEDON CHAMPIONSHIPS" style="height: 100%; width: 100%; object-fit: cover;">
+    </div>
+    <div class="event-details" style="padding: 15px; display: flex; flex-direction: column; gap: 8px; flex-grow: 1;">
+    <h3 style="font-size: 1rem;">WIMBLEDON CHAMPIONSHIPS </h3>
+    <p class="meta" style="color: var(--text-secondary); font-size: 0.85rem;">Tennis Grand Slam</p>
+    <div class="date-row" style="display: flex; gap: 15px; color: var(--text-primary); font-size: 0.9rem; align-items: center; margin-top: 5px; margin-bottom: 10px;">
+    <div style="display: flex; gap: 5px; align-items: center;">
+    <i class="fa-regular fa-calendar" style="color: var(--accent-color);"></i>
+    <span>Jul 1</span>
+    </div>
+    <div style="display: flex; gap: 5px; align-items: center;">
+    <i class="fa-regular fa-clock" style="color: var(--accent-color);"></i>
+    <span>13:30 BST</span>
+    </div>
+    </div>
+    <button class="btn-book-sm" style="width: 100%; margin-top: auto;">Book Now</button>
+    </div>
+    </div>
+    <div class="event-card" data-category="Other" data-language="English" data-price="0" style="background: var(--card-bg); border-radius: 15px; overflow: hidden; display: flex; flex-direction: column;">
+    <div class="event-img-container" style="height: 350px; position: relative;">
+    <img src="https://images.unsplash.com/photo-1533130061792-64b345e4a833?auto=format&fit=crop&q=80&w=600" alt="FORMULA ONE" style="height: 100%; width: 100%; object-fit: cover;">
+    </div>
+    <div class="event-details" style="padding: 15px; display: flex; flex-direction: column; gap: 8px; flex-grow: 1;">
+    <h3 style="font-size: 1rem;">FORMULA ONE </h3>
+    <p class="meta" style="color: var(--text-secondary); font-size: 0.85rem;">Motorsport Racing</p>
+    <div class="date-row" style="display: flex; gap: 15px; color: var(--text-primary); font-size: 0.9rem; align-items: center; margin-top: 5px; margin-bottom: 10px;">
+    <div style="display: flex; gap: 5px; align-items: center;">
+    <i class="fa-regular fa-calendar" style="color: var(--accent-color);"></i>
+    <span>Aug 25</span>
+    </div>
+    <div style="display: flex; gap: 5px; align-items: center;">
+    <i class="fa-regular fa-clock" style="color: var(--accent-color);"></i>
+    <span>14:00 CET</span>
+    </div>
+    </div>
+    <button class="btn-book-sm" style="width: 100%; margin-top: auto;">Book Now</button>
+    </div>
+    </div>
+    <div class="event-card" data-category="Other" data-language="English" data-price="0" style="background: var(--card-bg); border-radius: 15px; overflow: hidden; display: flex; flex-direction: column;">
+    <div class="event-img-container" style="height: 350px; position: relative;">
+    <img src="https://images.unsplash.com/photo-1544441893-675973e31985?auto=format&fit=crop&q=80&w=600" alt="PRO KABADDI LEAGUE" style="height: 100%; width: 100%; object-fit: cover;">
+    </div>
+    <div class="event-details" style="padding: 15px; display: flex; flex-direction: column; gap: 8px; flex-grow: 1;">
+    <h3 style="font-size: 1rem;">PRO KABADDI LEAGUE </h3>
+    <p class="meta" style="color: var(--text-secondary); font-size: 0.85rem;">Kabaddi</p>
+    <div class="date-row" style="display: flex; gap: 15px; color: var(--text-primary); font-size: 0.9rem; align-items: center; margin-top: 5px; margin-bottom: 10px;">
+    <div style="display: flex; gap: 5px; align-items: center;">
+    <i class="fa-regular fa-calendar" style="color: var(--accent-color);"></i>
+    <span>Oct 15</span>
+    </div>
+    <div style="display: flex; gap: 5px; align-items: center;">
+    <i class="fa-regular fa-clock" style="color: var(--accent-color);"></i>
+    <span>20:00 IST</span>
+    </div>
+    </div>
+    <button class="btn-book-sm" style="width: 100%; margin-top: auto;">Book Now</button>
+    </div>
+    </div>
+    <div class="event-card" data-category="Other" data-language="English" data-price="0" style="background: var(--card-bg); border-radius: 15px; overflow: hidden; display: flex; flex-direction: column;">
+    <div class="event-img-container" style="height: 350px; position: relative;">
+    <img src="https://images.unsplash.com/photo-1518604666860-9ed391f76460?auto=format&fit=crop&q=80&w=600" alt="INDIAN SUPER LEAGUE" style="height: 100%; width: 100%; object-fit: cover;">
+    </div>
+    <div class="event-details" style="padding: 15px; display: flex; flex-direction: column; gap: 8px; flex-grow: 1;">
+    <h3 style="font-size: 1rem;">INDIAN SUPER LEAGUE </h3>
+    <p class="meta" style="color: var(--text-secondary); font-size: 0.85rem;">Football</p>
+    <div class="date-row" style="display: flex; gap: 15px; color: var(--text-primary); font-size: 0.9rem; align-items: center; margin-top: 5px; margin-bottom: 10px;">
+    <div style="display: flex; gap: 5px; align-items: center;">
+    <i class="fa-regular fa-calendar" style="color: var(--accent-color);"></i>
+    <span>Nov 20</span>
+    </div>
+    <div style="display: flex; gap: 5px; align-items: center;">
+    <i class="fa-regular fa-clock" style="color: var(--accent-color);"></i>
+    <span>19:30 IST</span>
+    </div>
+    </div>
+    <button class="btn-book-sm" style="width: 100%; margin-top: auto;">Book Now</button>
+    </div>
+    </div>
+    <div class="event-card" data-category="Other" data-language="English" data-price="0" style="background: var(--card-bg); border-radius: 15px; overflow: hidden; display: flex; flex-direction: column;">
+    <div class="event-img-container" style="height: 350px; position: relative;">
+    <img src="https://images.unsplash.com/photo-1504450758481-7338eba7524a?auto=format&fit=crop&q=80&w=600" alt="NBA FINALS" style="height: 100%; width: 100%; object-fit: cover;">
+    </div>
+    <div class="event-details" style="padding: 15px; display: flex; flex-direction: column; gap: 8px; flex-grow: 1;">
+    <h3 style="font-size: 1rem;">NBA FINALS </h3>
+    <p class="meta" style="color: var(--text-secondary); font-size: 0.85rem;">Basketball</p>
+    <div class="date-row" style="display: flex; gap: 15px; color: var(--text-primary); font-size: 0.9rem; align-items: center; margin-top: 5px; margin-bottom: 10px;">
+    <div style="display: flex; gap: 5px; align-items: center;">
+    <i class="fa-regular fa-calendar" style="color: var(--accent-color);"></i>
+    <span>Jun 6</span>
+    </div>
+    <div style="display: flex; gap: 5px; align-items: center;">
+    <i class="fa-regular fa-clock" style="color: var(--accent-color);"></i>
+    <span>20:30 EST</span>
+    </div>
+    </div>
+    <button class="btn-book-sm" style="width: 100%; margin-top: auto;">Book Now</button>
+    </div>
+    </div>
+    <div class="event-card" data-category="Other" data-language="English" data-price="0" style="background: var(--card-bg); border-radius: 15px; overflow: hidden; display: flex; flex-direction: column;">
+    <div class="event-img-container" style="height: 350px; position: relative;">
+    <img src="https://upload.wikimedia.org/wikipedia/commons/d/d0/Super_Bowl_rings_on_display.jpg" alt="SUPER BOWL" style="height: 100%; width: 100%; object-fit: cover;">
+    </div>
+    <div class="event-details" style="padding: 15px; display: flex; flex-direction: column; gap: 8px; flex-grow: 1;">
+    <h3 style="font-size: 1rem;">SUPER BOWL </h3>
+    <p class="meta" style="color: var(--text-secondary); font-size: 0.85rem;">American Football</p>
+    <div class="date-row" style="display: flex; gap: 15px; color: var(--text-primary); font-size: 0.9rem; align-items: center; margin-top: 5px; margin-bottom: 10px;">
+    <div style="display: flex; gap: 5px; align-items: center;">
+    <i class="fa-regular fa-calendar" style="color: var(--accent-color);"></i>
+    <span>Feb 11</span>
+    </div>
+    <div style="display: flex; gap: 5px; align-items: center;">
+    <i class="fa-regular fa-clock" style="color: var(--accent-color);"></i>
+    <span>18:30 EST</span>
+    </div>
+    </div>
+    <button class="btn-book-sm" style="width: 100%; margin-top: auto;">Book Now</button>
+    </div>
+    </div>
+    <div class="event-card" data-category="Other" data-language="English" data-price="0" style="background: var(--card-bg); border-radius: 15px; overflow: hidden; display: flex; flex-direction: column;">
+    <div class="event-img-container" style="height: 350px; position: relative;">
+    <img src="https://images.unsplash.com/photo-1574629810360-7efbbe195018?auto=format&fit=crop&q=80&w=600" alt="PREMIER LEAGUE" style="height: 100%; width: 100%; object-fit: cover;">
+    </div>
+    <div class="event-details" style="padding: 15px; display: flex; flex-direction: column; gap: 8px; flex-grow: 1;">
+    <h3 style="font-size: 1rem;">PREMIER LEAGUE </h3>
+    <p class="meta" style="color: var(--text-secondary); font-size: 0.85rem;">English Football</p>
+    <div class="date-row" style="display: flex; gap: 15px; color: var(--text-primary); font-size: 0.9rem; align-items: center; margin-top: 5px; margin-bottom: 10px;">
+    <div style="display: flex; gap: 5px; align-items: center;">
+    <i class="fa-regular fa-calendar" style="color: var(--accent-color);"></i>
+    <span>Aug 16</span>
+    </div>
+    <div style="display: flex; gap: 5px; align-items: center;">
+    <i class="fa-regular fa-clock" style="color: var(--accent-color);"></i>
+    <span>15:00 BST</span>
+    </div>
+    </div>
+    <button class="btn-book-sm" style="width: 100%; margin-top: auto;">Book Now</button>
+    </div>
+    </div>
+    <div class="event-card" data-category="Other" data-language="English" data-price="0" style="background: var(--card-bg); border-radius: 15px; overflow: hidden; display: flex; flex-direction: column;">
+    <div class="event-img-container" style="height: 350px; position: relative;">
+    <img src="https://images.unsplash.com/photo-1574629810360-7efbbe195018?auto=format&fit=crop&q=80&w=600" alt="UEFA CHAMPIONS LEAGUE" style="height: 100%; width: 100%; object-fit: cover;">
+    </div>
+    <div class="event-details" style="padding: 15px; display: flex; flex-direction: column; gap: 8px; flex-grow: 1;">
+    <h3 style="font-size: 1rem;">UEFA CHAMPIONS LEAGUE </h3>
+    <p class="meta" style="color: var(--text-secondary); font-size: 0.85rem;">European Football</p>
+    <div class="date-row" style="display: flex; gap: 15px; color: var(--text-primary); font-size: 0.9rem; align-items: center; margin-top: 5px; margin-bottom: 10px;">
+    <div style="display: flex; gap: 5px; align-items: center;">
+    <i class="fa-regular fa-calendar" style="color: var(--accent-color);"></i>
+    <span>May 31</span>
+    </div>
+    <div style="display: flex; gap: 5px; align-items: center;">
+    <i class="fa-regular fa-clock" style="color: var(--accent-color);"></i>
+    <span>20:00 CET</span>
+    </div>
+    </div>
+    <button class="btn-book-sm" style="width: 100%; margin-top: auto;">Book Now</button>
+    </div>
+    </div>
+    <div class="event-card" data-category="Other" data-language="English" data-price="0" style="background: var(--card-bg); border-radius: 15px; overflow: hidden; display: flex; flex-direction: column;">
+    <div class="event-img-container" style="height: 350px; position: relative;">
+    <img src="https://images.unsplash.com/photo-1516280440614-37939bbacd81?auto=format&fit=crop&q=80&w=600" alt="WRESTLEMANIA" style="height: 100%; width: 100%; object-fit: cover;">
+    </div>
+    <div class="event-details" style="padding: 15px; display: flex; flex-direction: column; gap: 8px; flex-grow: 1;">
+    <h3 style="font-size: 1rem;">WRESTLEMANIA </h3>
+    <p class="meta" style="color: var(--text-secondary); font-size: 0.85rem;">Professional Wrestling</p>
+    <div class="date-row" style="display: flex; gap: 15px; color: var(--text-primary); font-size: 0.9rem; align-items: center; margin-top: 5px; margin-bottom: 10px;">
+    <div style="display: flex; gap: 5px; align-items: center;">
+    <i class="fa-regular fa-calendar" style="color: var(--accent-color);"></i>
+    <span>Apr 6</span>
+    </div>
+    <div style="display: flex; gap: 5px; align-items: center;">
+    <i class="fa-regular fa-clock" style="color: var(--accent-color);"></i>
+    <span>19:00 EST</span>
+    </div>
+    </div>
+    <button class="btn-book-sm" style="width: 100%; margin-top: auto;">Book Now</button>
+    </div>
+    </div>
+    <div class="event-card" data-category="Other" data-language="English" data-price="0" style="background: var(--card-bg); border-radius: 15px; overflow: hidden; display: flex; flex-direction: column;">
+    <div class="event-img-container" style="height: 350px; position: relative;">
+    <img src="https://images.unsplash.com/photo-1461896836934-ffe607ba8211?auto=format&fit=crop&q=80&w=600" alt="OLYMPIC GAMES" style="height: 100%; width: 100%; object-fit: cover;">
+    </div>
+    <div class="event-details" style="padding: 15px; display: flex; flex-direction: column; gap: 8px; flex-grow: 1;">
+    <h3 style="font-size: 1rem;">OLYMPIC GAMES </h3>
+    <p class="meta" style="color: var(--text-secondary); font-size: 0.85rem;">Multi-sport Event</p>
+    <div class="date-row" style="display: flex; gap: 15px; color: var(--text-primary); font-size: 0.9rem; align-items: center; margin-top: 5px; margin-bottom: 10px;">
+    <div style="display: flex; gap: 5px; align-items: center;">
+    <i class="fa-regular fa-calendar" style="color: var(--accent-color);"></i>
+    <span>Jul 26</span>
+    </div>
+    <div style="display: flex; gap: 5px; align-items: center;">
+    <i class="fa-regular fa-clock" style="color: var(--accent-color);"></i>
+    <span>09:00 CET</span>
+    </div>
+    </div>
+    <button class="btn-book-sm" style="width: 100%; margin-top: auto;">Book Now</button>
+    </div>
+    </div>
+    <div class="event-card" data-category="Other" data-language="English" data-price="0" style="background: var(--card-bg); border-radius: 15px; overflow: hidden; display: flex; flex-direction: column;">
+    <div class="event-img-container" style="height: 350px; position: relative;">
+    <img src="https://images.unsplash.com/photo-1595435742656-5272d0b3fa82?auto=format&fit=crop&q=80&w=600" alt="AUSTRALIAN OPEN" style="height: 100%; width: 100%; object-fit: cover;">
+    </div>
+    <div class="event-details" style="padding: 15px; display: flex; flex-direction: column; gap: 8px; flex-grow: 1;">
+    <h3 style="font-size: 1rem;">AUSTRALIAN OPEN </h3>
+    <p class="meta" style="color: var(--text-secondary); font-size: 0.85rem;">Tennis Grand Slam</p>
+    <div class="date-row" style="display: flex; gap: 15px; color: var(--text-primary); font-size: 0.9rem; align-items: center; margin-top: 5px; margin-bottom: 10px;">
+    <div style="display: flex; gap: 5px; align-items: center;">
+    <i class="fa-regular fa-calendar" style="color: var(--accent-color);"></i>
+    <span>Jan 12</span>
+    </div>
+    <div style="display: flex; gap: 5px; align-items: center;">
+    <i class="fa-regular fa-clock" style="color: var(--accent-color);"></i>
+    <span>11:00 AEDT</span>
+    </div>
+    </div>
+    <button class="btn-book-sm" style="width: 100%; margin-top: auto;">Book Now</button>
+    </div>
+    </div>
+    <div class="event-card" data-category="Other" data-language="English" data-price="0" style="background: var(--card-bg); border-radius: 15px; overflow: hidden; display: flex; flex-direction: column;">
+    <div class="event-img-container" style="height: 350px; position: relative;">
+    <img src="https://images.unsplash.com/photo-1562077772-3bd90403f7f0?auto=format&fit=crop&q=80&w=600" alt="THE ASHES" style="height: 100%; width: 100%; object-fit: cover;">
+    </div>
+    <div class="event-details" style="padding: 15px; display: flex; flex-direction: column; gap: 8px; flex-grow: 1;">
+    <h3 style="font-size: 1rem;">THE ASHES </h3>
+    <p class="meta" style="color: var(--text-secondary); font-size: 0.85rem;">Test Cricket</p>
+    <div class="date-row" style="display: flex; gap: 15px; color: var(--text-primary); font-size: 0.9rem; align-items: center; margin-top: 5px; margin-bottom: 10px;">
+    <div style="display: flex; gap: 5px; align-items: center;">
+    <i class="fa-regular fa-calendar" style="color: var(--accent-color);"></i>
+    <span>Nov 21</span>
+    </div>
+    <div style="display: flex; gap: 5px; align-items: center;">
+    <i class="fa-regular fa-clock" style="color: var(--accent-color);"></i>
+    <span>10:00 AEDT</span>
+    </div>
+    </div>
+    <button class="btn-book-sm" style="width: 100%; margin-top: auto;">Book Now</button>
+    </div>
+    </div>
+    </div>
+    </section>
+    <!-- Events Details Section -->
+    <section class="section-events-details" id="events-details-section" style="display: none; margin-top: 50px;">
+    <div class="events-layout" style="display: grid; grid-template-columns: 320px 1fr; gap: 30px;">
+    <!-- Left Sidebar Filters for Events -->
+    <aside class="events-sidebar" id="events-sidebar" style="background: var(--card-bg); padding: 25px; border-radius: 20px; border: 1px solid var(--glass-border); height: fit-content; position: sticky; top: 100px;">
+    <h2 style="font-size: 1.4rem; margin-bottom: 20px; border-bottom: 1px solid var(--glass-border); padding-bottom: 10px;">🔍 Filters</h2>
+    <div class="filter-group" style="margin-bottom: 25px;">
+    <h3 style="font-size: 1rem; margin-bottom: 15px;">🌐 Languages </h3>
+    <div class="checkbox-list" style="display: flex; flex-direction: column; gap: 10px;">
+    <label style="display: flex; align-items: center; gap: 10px; cursor: pointer; color: var(--text-secondary);"><input type="checkbox" data-type="language" data-value="English"> 🇺🇸 English</label>
+    <label style="display: flex; align-items: center; gap: 10px; cursor: pointer; color: var(--text-secondary);"><input type="checkbox" data-type="language" data-value="Hindi"> 🇮🇳 Hindi</label>
+    <label style="display: flex; align-items: center; gap: 10px; cursor: pointer; color: var(--text-secondary);"><input type="checkbox" data-type="language" data-value="Bengali"> 🇮🇳 Bengali</label>
+    <label style="display: flex; align-items: center; gap: 10px; cursor: pointer; color: var(--text-secondary);"><input type="checkbox" data-type="language" data-value="Kannada"> 🇮🇳 Kannada</label>
+    <label style="display: flex; align-items: center; gap: 10px; cursor: pointer; color: var(--text-secondary);"><input type="checkbox" data-type="language" data-value="Tamil"> 🇮🇳 Tamil</label>
+    <label style="display: flex; align-items: center; gap: 10px; cursor: pointer; color: var(--text-secondary);"><input type="checkbox" data-type="language" data-value="Telugu"> 🇮🇳 Telugu</label>
+    <label style="display: flex; align-items: center; gap: 10px; cursor: pointer; color: var(--text-secondary);"><input type="checkbox" data-type="language" data-value="Marathi"> 🇮🇳 Marathi</label>
+    <label style="display: flex; align-items: center; gap: 10px; cursor: pointer; color: var(--text-secondary);"><input type="checkbox" data-type="language" data-value="Malayalam"> 🇮🇳 Malayalam</label>
+    <label style="display: flex; align-items: center; gap: 10px; cursor: pointer; color: var(--text-secondary);"><input type="checkbox" data-type="language" data-value="Tulu"> 🇮🇳 Tulu</label>
+    <label style="display: flex; align-items: center; gap: 10px; cursor: pointer; color: var(--text-secondary);"><input type="checkbox" data-type="language" data-value="Other"> ➕ More Other languages</label>
+    </div>
+    </div>
+    <div class="filter-group" style="margin-bottom: 25px;">
+    <h3 style="font-size: 1rem; margin-bottom: 15px;">🎭 Categories </h3>
+    <div class="checkbox-list" style="display: flex; flex-direction: column; gap: 10px;">
+    <label style="display: flex; align-items: center; gap: 10px; cursor: pointer; color: var(--text-secondary);"><input type="checkbox" data-type="category" data-value="Workshops"> 🛠️ Workshops</label>
+    <label style="display: flex; align-items: center; gap: 10px; cursor: pointer; color: var(--text-secondary);"><input type="checkbox" data-type="category" data-value="Comedy Shows"> 😂 Comedy Shows</label>
+    <label style="display: flex; align-items: center; gap: 10px; cursor: pointer; color: var(--text-secondary);"><input type="checkbox" data-type="category" data-value="Music Shows"> 🎵 Music Shows</label>
+    <label style="display: flex; align-items: center; gap: 10px; cursor: pointer; color: var(--text-secondary);"><input type="checkbox" data-type="category" data-value="Kids"> 🧒 Kids</label>
+    <label style="display: flex; align-items: center; gap: 10px; cursor: pointer; color: var(--text-secondary);"><input type="checkbox" data-type="category" data-value="Meetups"> 🤝 Meetups</label>
+    <label style="display: flex; align-items: center; gap: 10px; cursor: pointer; color: var(--text-secondary);"><input type="checkbox" data-type="category" data-value="Exhibitions"> 🖼️ Exhibitions</label>
+    <label style="display: flex; align-items: center; gap: 10px; cursor: pointer; color: var(--text-secondary);"><input type="checkbox" data-type="category" data-value="Performances"> 🩰 Performances</label>
+    <label style="display: flex; align-items: center; gap: 10px; cursor: pointer; color: var(--text-secondary);"><input type="checkbox" data-type="category" data-value="Conferences"> 🤝 Conferences</label>
+    </div>
+    </div>
+    <div class="filter-group" style="margin-bottom: 25px;">
+    <h3 style="font-size: 1rem; margin-bottom: 15px;">💰 Price Range </h3>
+    <input type="range" min="0" max="2000" value="2000" style="width: 100%; accent-color: var(--accent-color);">
+    <div style="display: flex; justify-content: space-between; font-size: 0.8rem; color: var(--text-secondary); margin-top: 8px;">
+    <span>₹0</span>
+    <span>₹2000</span>
+    </div>
+    </div>
+    <div class="filter-group" style="margin-bottom: 25px;">
+    <h3 style="font-size: 1rem; margin-bottom: 15px;">📅 Date </h3>
+    <input type="date" style="width: 100%; background: var(--glass-bg); border: 1px solid var(--glass-border); color: var(--text-primary); padding: 12px; border-radius: 10px; font-family: inherit; outline: none; cursor: pointer;">
+    </div>
+    <button id="applyEventsFilterBtn" class="btn-auth-submit" style="width: 100%; margin-top: 10px; padding: 12px; border-radius: 10px; background: var(--gradient-primary); border: none; color: white; font-weight: 600; cursor: pointer; transition: transform 0.3s;" onmouseover="this.style.transform='translateY(-2px)'" onmouseout="this.style.transform='translateY(0)'">Apply Now</button>
+    </aside>
+    <!-- Events Grid Container -->
+    <div class="events-main-content">
+    <div class="section-header" style="margin-bottom: 30px; display: flex; flex-direction: column; gap: 10px;">
+    <h2 style="font-size: 2rem; font-weight: 700;">Explore Events</h2>
+    <p style="color: var(--text-secondary); font-size: 1.1rem;">From workshops to concerts, find what moves you.</p>
+    </div>
+    <div class="events-grid" id="events-details-grid" style="display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 25px;">
+    <div class="event-card" data-category="Workshops" data-language="English" data-price="899" style="background: var(--card-bg); border-radius: 15px; overflow: hidden; display: flex; flex-direction: column; transition: transform 0.3s, box-shadow 0.3s; border: 1px solid var(--glass-border); cursor: pointer;" onmouseover="this.style.transform='scale(1.02)';" onmouseout="this.style.transform='scale(1)';">
+    <div class="event-img-container" style="height: 250px; position: relative;">
+    <img src="https://images.unsplash.com/photo-1513364776144-60967b0f800f?auto=format&fit=crop&q=80&w=600" alt="Unlocking Creativity: Oil Painting Workshop" style="height: 100%; width: 100%; object-fit: cover;">
+    <div style="position: absolute; top: 15px; left: 15px; background: var(--accent-color); color: white; padding: 5px 12px; border-radius: 50px; font-size: 0.75rem; font-weight: 600;">Workshops</div>
+    <div class="official-badge"><i class="fa-solid fa-star"></i> Official</div>
+    </div>
+    <div class="event-details" style="padding: 20px; display: flex; flex-direction: column; gap: 10px; flex-grow: 1;">
+    <h3 style="font-size: 1.1rem; line-height: 1.4;">Unlocking Creativity: Oil Painting Workshop </h3>
+    <div style="display: flex; flex-direction: column; gap: 5px;">
+    <p style="color: var(--text-secondary); font-size: 0.85rem;"><i class="fa-regular fa-calendar" style="margin-right: 8px; color: var(--accent-color);"></i> Apr 15</p>
+    <p style="color: var(--text-secondary); font-size: 0.85rem;"><i class="fa-solid fa-language" style="margin-right: 8px; color: var(--accent-color);"></i> English</p>
+    <p style="color: var(--text-primary); font-weight: 600; font-size: 1rem;"><i class="fa-solid fa-indian-rupee-sign" style="margin-right: 8px; color: var(--accent-color);"></i> ₹899</p>
+    </div>
+    <button class="btn-book-sm" style="width: 100%; margin-top: auto; padding: 10px; border-radius: 8px; border: 1px solid var(--accent-color); background: transparent; color: var(--accent-color); font-weight: 600; transition: all 0.3s;" onmouseover="this.style.background='var(--accent-color)'; this.style.color='white';" onmouseout="this.style.background='transparent'; this.style.color='var(--accent-color)';">Book Now</button>
+    </div>
+    </div>
+    <div class="event-card" data-category="Comedy Shows" data-language="Hindi" data-price="999" style="background: var(--card-bg); border-radius: 15px; overflow: hidden; display: flex; flex-direction: column; transition: transform 0.3s, box-shadow 0.3s; border: 1px solid var(--glass-border); cursor: pointer;" onmouseover="this.style.transform='scale(1.02)';" onmouseout="this.style.transform='scale(1)';">
+    <div class="event-img-container" style="height: 250px; position: relative;">
+    <img src="https://images.unsplash.com/photo-1516280440614-37939bbacd81?auto=format&fit=crop&q=80&w=600" alt="LOL Night with Zakir & Friends" style="height: 100%; width: 100%; object-fit: cover;">
+    <div style="position: absolute; top: 15px; left: 15px; background: var(--accent-color); color: white; padding: 5px 12px; border-radius: 50px; font-size: 0.75rem; font-weight: 600;">Comedy Shows</div>
+    <div class="official-badge"><i class="fa-solid fa-star"></i> Official</div>
+    </div>
+    <div class="event-details" style="padding: 20px; display: flex; flex-direction: column; gap: 10px; flex-grow: 1;">
+    <h3 style="font-size: 1.1rem; line-height: 1.4;">LOL Night with Zakir & Friends </h3>
+    <div style="display: flex; flex-direction: column; gap: 5px;">
+    <p style="color: var(--text-secondary); font-size: 0.85rem;"><i class="fa-regular fa-calendar" style="margin-right: 8px; color: var(--accent-color);"></i> Apr 18</p>
+    <p style="color: var(--text-secondary); font-size: 0.85rem;"><i class="fa-solid fa-language" style="margin-right: 8px; color: var(--accent-color);"></i> Hindi</p>
+    <p style="color: var(--text-primary); font-weight: 600; font-size: 1rem;"><i class="fa-solid fa-indian-rupee-sign" style="margin-right: 8px; color: var(--accent-color);"></i> ₹999</p>
+    </div>
+    <button class="btn-book-sm" style="width: 100%; margin-top: auto; padding: 10px; border-radius: 8px; border: 1px solid var(--accent-color); background: transparent; color: var(--accent-color); font-weight: 600; transition: all 0.3s;" onmouseover="this.style.background='var(--accent-color)'; this.style.color='white';" onmouseout="this.style.background='transparent'; this.style.color='var(--accent-color)';">Book Now</button>
+    </div>
+    </div>
+    <div class="event-card" data-category="Music Shows" data-language="English" data-price="1499" style="background: var(--card-bg); border-radius: 15px; overflow: hidden; display: flex; flex-direction: column; transition: transform 0.3s, box-shadow 0.3s; border: 1px solid var(--glass-border); cursor: pointer;" onmouseover="this.style.transform='scale(1.02)';" onmouseout="this.style.transform='scale(1)';">
+    <div class="event-img-container" style="height: 250px; position: relative;">
+    <img src="https://images.unsplash.com/photo-1511192336575-5a79af67a629?auto=format&fit=crop&q=80&w=600" alt="Global Jazz Festival 2024" style="height: 100%; width: 100%; object-fit: cover;">
+    <div style="position: absolute; top: 15px; left: 15px; background: var(--accent-color); color: white; padding: 5px 12px; border-radius: 50px; font-size: 0.75rem; font-weight: 600;">Music Shows</div>
+    <div class="official-badge"><i class="fa-solid fa-star"></i> Official</div>
+    </div>
+    <div class="event-details" style="padding: 20px; display: flex; flex-direction: column; gap: 10px; flex-grow: 1;">
+    <h3 style="font-size: 1.1rem; line-height: 1.4;">Global Jazz Festival 2024 </h3>
+    <div style="display: flex; flex-direction: column; gap: 5px;">
+    <p style="color: var(--text-secondary); font-size: 0.85rem;"><i class="fa-regular fa-calendar" style="margin-right: 8px; color: var(--accent-color);"></i> Apr 20</p>
+    <p style="color: var(--text-secondary); font-size: 0.85rem;"><i class="fa-solid fa-language" style="margin-right: 8px; color: var(--accent-color);"></i> English</p>
+    <p style="color: var(--text-primary); font-weight: 600; font-size: 1rem;"><i class="fa-solid fa-indian-rupee-sign" style="margin-right: 8px; color: var(--accent-color);"></i> ₹1499</p>
+    </div>
+    <button class="btn-book-sm" style="width: 100%; margin-top: auto; padding: 10px; border-radius: 8px; border: 1px solid var(--accent-color); background: transparent; color: var(--accent-color); font-weight: 600; transition: all 0.3s;" onmouseover="this.style.background='var(--accent-color)'; this.style.color='white';" onmouseout="this.style.background='transparent'; this.style.color='var(--accent-color)';">Book Now</button>
+    </div>
+    </div>
+    <div class="event-card" data-category="Kids" data-language="Bengali" data-price="499" style="background: var(--card-bg); border-radius: 15px; overflow: hidden; display: flex; flex-direction: column; transition: transform 0.3s, box-shadow 0.3s; border: 1px solid var(--glass-border); cursor: pointer;" onmouseover="this.style.transform='scale(1.02)';" onmouseout="this.style.transform='scale(1)';">
+    <div class="event-img-container" style="height: 250px; position: relative;">
+    <img src="https://images.unsplash.com/photo-1526628953301-3e589a6a8b74?auto=format&fit=crop&q=80&w=600" alt="Magic & Mystery: Kids Wonderland" style="height: 100%; width: 100%; object-fit: cover;">
+    <div style="position: absolute; top: 15px; left: 15px; background: var(--accent-color); color: white; padding: 5px 12px; border-radius: 50px; font-size: 0.75rem; font-weight: 600;">Kids</div>
+    <div class="official-badge"><i class="fa-solid fa-star"></i> Official</div>
+    </div>
+    <div class="event-details" style="padding: 20px; display: flex; flex-direction: column; gap: 10px; flex-grow: 1;">
+    <h3 style="font-size: 1.1rem; line-height: 1.4;">Magic & Mystery: Kids Wonderland </h3>
+    <div style="display: flex; flex-direction: column; gap: 5px;">
+    <p style="color: var(--text-secondary); font-size: 0.85rem;"><i class="fa-regular fa-calendar" style="margin-right: 8px; color: var(--accent-color);"></i> Apr 22</p>
+    <p style="color: var(--text-secondary); font-size: 0.85rem;"><i class="fa-solid fa-language" style="margin-right: 8px; color: var(--accent-color);"></i> Bengali</p>
+    <p style="color: var(--text-primary); font-weight: 600; font-size: 1rem;"><i class="fa-solid fa-indian-rupee-sign" style="margin-right: 8px; color: var(--accent-color);"></i> ₹499</p>
+    </div>
+    <button class="btn-book-sm" style="width: 100%; margin-top: auto; padding: 10px; border-radius: 8px; border: 1px solid var(--accent-color); background: transparent; color: var(--accent-color); font-weight: 600; transition: all 0.3s;" onmouseover="this.style.background='var(--accent-color)'; this.style.color='white';" onmouseout="this.style.background='transparent'; this.style.color='var(--accent-color)';">Book Now</button>
+    </div>
+    </div>
+    <div class="event-card" data-category="Meetups" data-language="English" data-price="299" style="background: var(--card-bg); border-radius: 15px; overflow: hidden; display: flex; flex-direction: column; transition: transform 0.3s, box-shadow 0.3s; border: 1px solid var(--glass-border); cursor: pointer;" onmouseover="this.style.transform='scale(1.02)';" onmouseout="this.style.transform='scale(1)';">
+    <div class="event-img-container" style="height: 250px; position: relative;">
+    <img src="https://images.unsplash.com/photo-1515187029135-18ee286d815b?auto=format&fit=crop&q=80&w=600" alt="Startup Founders Meetup: Kolkata 2024" style="height: 100%; width: 100%; object-fit: cover;">
+    <div style="position: absolute; top: 15px; left: 15px; background: var(--accent-color); color: white; padding: 5px 12px; border-radius: 50px; font-size: 0.75rem; font-weight: 600;">Meetups</div>
+    <div class="official-badge"><i class="fa-solid fa-star"></i> Official</div>
+    </div>
+    <div class="event-details" style="padding: 20px; display: flex; flex-direction: column; gap: 10px; flex-grow: 1;">
+    <h3 style="font-size: 1.1rem; line-height: 1.4;">Startup Founders Meetup: Kolkata 2024 </h3>
+    <div style="display: flex; flex-direction: column; gap: 5px;">
+    <p style="color: var(--text-secondary); font-size: 0.85rem;"><i class="fa-regular fa-calendar" style="margin-right: 8px; color: var(--accent-color);"></i> Apr 25</p>
+    <p style="color: var(--text-secondary); font-size: 0.85rem;"><i class="fa-solid fa-language" style="margin-right: 8px; color: var(--accent-color);"></i> English</p>
+    <p style="color: var(--text-primary); font-weight: 600; font-size: 1rem;"><i class="fa-solid fa-indian-rupee-sign" style="margin-right: 8px; color: var(--accent-color);"></i> ₹299</p>
+    </div>
+    <button class="btn-book-sm" style="width: 100%; margin-top: auto; padding: 10px; border-radius: 8px; border: 1px solid var(--accent-color); background: transparent; color: var(--accent-color); font-weight: 600; transition: all 0.3s;" onmouseover="this.style.background='var(--accent-color)'; this.style.color='white';" onmouseout="this.style.background='transparent'; this.style.color='var(--accent-color)';">Book Now</button>
+    </div>
+    </div>
+    <div class="event-card" data-category="Exhibitions" data-language="English" data-price="0" style="background: var(--card-bg); border-radius: 15px; overflow: hidden; display: flex; flex-direction: column; transition: transform 0.3s, box-shadow 0.3s; border: 1px solid var(--glass-border); cursor: pointer;" onmouseover="this.style.transform='scale(1.02)';" onmouseout="this.style.transform='scale(1)';">
+    <div class="event-img-container" style="height: 250px; position: relative;">
+    <img src="https://images.unsplash.com/photo-1547826039-bfc35e0f1ea8?auto=format&fit=crop&q=80&w=600" alt="Modern Art & Sculpture Exhibition" style="height: 100%; width: 100%; object-fit: cover;">
+    <div style="position: absolute; top: 15px; left: 15px; background: var(--accent-color); color: white; padding: 5px 12px; border-radius: 50px; font-size: 0.75rem; font-weight: 600;">Exhibitions</div>
+    <div class="official-badge"><i class="fa-solid fa-star"></i> Official</div>
+    </div>
+    <div class="event-details" style="padding: 20px; display: flex; flex-direction: column; gap: 10px; flex-grow: 1;">
+    <h3 style="font-size: 1.1rem; line-height: 1.4;">Modern Art & Sculpture Exhibition </h3>
+    <div style="display: flex; flex-direction: column; gap: 5px;">
+    <p style="color: var(--text-secondary); font-size: 0.85rem;"><i class="fa-regular fa-calendar" style="margin-right: 8px; color: var(--accent-color);"></i> Apr 28</p>
+    <p style="color: var(--text-secondary); font-size: 0.85rem;"><i class="fa-solid fa-language" style="margin-right: 8px; color: var(--accent-color);"></i> English</p>
+    <p style="color: var(--text-primary); font-weight: 600; font-size: 1rem;"><i class="fa-solid fa-indian-rupee-sign" style="margin-right: 8px; color: var(--accent-color);"></i> Free</p>
+    </div>
+    <button class="btn-book-sm" style="width: 100%; margin-top: auto; padding: 10px; border-radius: 8px; border: 1px solid var(--accent-color); background: transparent; color: var(--accent-color); font-weight: 600; transition: all 0.3s;" onmouseover="this.style.background='var(--accent-color)'; this.style.color='white';" onmouseout="this.style.background='transparent'; this.style.color='var(--accent-color)';">Book Now</button>
+    </div>
+    </div>
+    <div class="event-card" data-category="Performances" data-language="English" data-price="1200" style="background: var(--card-bg); border-radius: 15px; overflow: hidden; display: flex; flex-direction: column; transition: transform 0.3s, box-shadow 0.3s; border: 1px solid var(--glass-border); cursor: pointer;" onmouseover="this.style.transform='scale(1.02)';" onmouseout="this.style.transform='scale(1)';">
+    <div class="event-img-container" style="height: 250px; position: relative;">
+    <img src="https://images.unsplash.com/photo-1508700115892-45ecd05ae2ad?auto=format&fit=crop&q=80&w=600" alt="Swan Lake: Classical Ballet Performance" style="height: 100%; width: 100%; object-fit: cover;">
+    <div style="position: absolute; top: 15px; left: 15px; background: var(--accent-color); color: white; padding: 5px 12px; border-radius: 50px; font-size: 0.75rem; font-weight: 600;">Performances</div>
+    <div class="official-badge"><i class="fa-solid fa-star"></i> Official</div>
+    </div>
+    <div class="event-details" style="padding: 20px; display: flex; flex-direction: column; gap: 10px; flex-grow: 1;">
+    <h3 style="font-size: 1.1rem; line-height: 1.4;">Swan Lake: Classical Ballet Performance </h3>
+    <div style="display: flex; flex-direction: column; gap: 5px;">
+    <p style="color: var(--text-secondary); font-size: 0.85rem;"><i class="fa-regular fa-calendar" style="margin-right: 8px; color: var(--accent-color);"></i> May 2</p>
+    <p style="color: var(--text-secondary); font-size: 0.85rem;"><i class="fa-solid fa-language" style="margin-right: 8px; color: var(--accent-color);"></i> English</p>
+    <p style="color: var(--text-primary); font-weight: 600; font-size: 1rem;"><i class="fa-solid fa-indian-rupee-sign" style="margin-right: 8px; color: var(--accent-color);"></i> ₹1200</p>
+    </div>
+    <button class="btn-book-sm" style="width: 100%; margin-top: auto; padding: 10px; border-radius: 8px; border: 1px solid var(--accent-color); background: transparent; color: var(--accent-color); font-weight: 600; transition: all 0.3s;" onmouseover="this.style.background='var(--accent-color)'; this.style.color='white';" onmouseout="this.style.background='transparent'; this.style.color='var(--accent-color)';">Book Now</button>
+    </div>
+    </div>
+    <div class="event-card" data-category="Conferences" data-language="English" data-price="1999" style="background: var(--card-bg); border-radius: 15px; overflow: hidden; display: flex; flex-direction: column; transition: transform 0.3s, box-shadow 0.3s; border: 1px solid var(--glass-border); cursor: pointer;" onmouseover="this.style.transform='scale(1.02)';" onmouseout="this.style.transform='scale(1)';">
+    <div class="event-img-container" style="height: 250px; position: relative;">
+    <img src="https://images.unsplash.com/photo-1677442135703-1787eea5ce01?auto=format&fit=crop&q=80&w=600" alt="TechNova: Future of AI Conference" style="height: 100%; width: 100%; object-fit: cover;">
+    <div style="position: absolute; top: 15px; left: 15px; background: var(--accent-color); color: white; padding: 5px 12px; border-radius: 50px; font-size: 0.75rem; font-weight: 600;">Conferences</div>
+    <div class="official-badge"><i class="fa-solid fa-star"></i> Official</div>
+    </div>
+    <div class="event-details" style="padding: 20px; display: flex; flex-direction: column; gap: 10px; flex-grow: 1;">
+    <h3 style="font-size: 1.1rem; line-height: 1.4;">TechNova: Future of AI Conference </h3>
+    <div style="display: flex; flex-direction: column; gap: 5px;">
+    <p style="color: var(--text-secondary); font-size: 0.85rem;"><i class="fa-regular fa-calendar" style="margin-right: 8px; color: var(--accent-color);"></i> May 5</p>
+    <p style="color: var(--text-secondary); font-size: 0.85rem;"><i class="fa-solid fa-language" style="margin-right: 8px; color: var(--accent-color);"></i> English</p>
+    <p style="color: var(--text-primary); font-weight: 600; font-size: 1rem;"><i class="fa-solid fa-indian-rupee-sign" style="margin-right: 8px; color: var(--accent-color);"></i> ₹1999</p>
+    </div>
+    <button class="btn-book-sm" style="width: 100%; margin-top: auto; padding: 10px; border-radius: 8px; border: 1px solid var(--accent-color); background: transparent; color: var(--accent-color); font-weight: 600; transition: all 0.3s;" onmouseover="this.style.background='var(--accent-color)'; this.style.color='white';" onmouseout="this.style.background='transparent'; this.style.color='var(--accent-color)';">Book Now</button>
+    </div>
+    </div>
+    <div class="event-card" data-category="Workshops" data-language="Hindi" data-price="750" style="background: var(--card-bg); border-radius: 15px; overflow: hidden; display: flex; flex-direction: column; transition: transform 0.3s, box-shadow 0.3s; border: 1px solid var(--glass-border); cursor: pointer;" onmouseover="this.style.transform='scale(1.02)';" onmouseout="this.style.transform='scale(1)';">
+    <div class="event-img-container" style="height: 250px; position: relative;">
+    <img src="https://images.unsplash.com/photo-1452587925148-ce544e77e70d?auto=format&fit=crop&q=80&w=600" alt="Photography Masterclass: Portrait Lighting" style="height: 100%; width: 100%; object-fit: cover;">
+    <div style="position: absolute; top: 15px; left: 15px; background: var(--accent-color); color: white; padding: 5px 12px; border-radius: 50px; font-size: 0.75rem; font-weight: 600;">Workshops</div>
+    <div class="official-badge"><i class="fa-solid fa-star"></i> Official</div>
+    </div>
+    <div class="event-details" style="padding: 20px; display: flex; flex-direction: column; gap: 10px; flex-grow: 1;">
+    <h3 style="font-size: 1.1rem; line-height: 1.4;">Photography Masterclass: Portrait Lighting </h3>
+    <div style="display: flex; flex-direction: column; gap: 5px;">
+    <p style="color: var(--text-secondary); font-size: 0.85rem;"><i class="fa-regular fa-calendar" style="margin-right: 8px; color: var(--accent-color);"></i> May 8</p>
+    <p style="color: var(--text-secondary); font-size: 0.85rem;"><i class="fa-solid fa-language" style="margin-right: 8px; color: var(--accent-color);"></i> Hindi</p>
+    <p style="color: var(--text-primary); font-weight: 600; font-size: 1rem;"><i class="fa-solid fa-indian-rupee-sign" style="margin-right: 8px; color: var(--accent-color);"></i> ₹750</p>
+    </div>
+    <button class="btn-book-sm" style="width: 100%; margin-top: auto; padding: 10px; border-radius: 8px; border: 1px solid var(--accent-color); background: transparent; color: var(--accent-color); font-weight: 600; transition: all 0.3s;" onmouseover="this.style.background='var(--accent-color)'; this.style.color='white';" onmouseout="this.style.background='transparent'; this.style.color='var(--accent-color)';">Book Now</button>
+    </div>
+    </div>
+    <div class="event-card" data-category="Comedy Shows" data-language="Tamil" data-price="599" style="background: var(--card-bg); border-radius: 15px; overflow: hidden; display: flex; flex-direction: column; transition: transform 0.3s, box-shadow 0.3s; border: 1px solid var(--glass-border); cursor: pointer;" onmouseover="this.style.transform='scale(1.02)';" onmouseout="this.style.transform='scale(1)';">
+    <div class="event-img-container" style="height: 250px; position: relative;">
+    <img src="https://images.unsplash.com/photo-1527224857830-43a7acc85260?auto=format&fit=crop&q=80&w=600" alt="Stand Up Special: The Sarcastic Soul" style="height: 100%; width: 100%; object-fit: cover;">
+    <div style="position: absolute; top: 15px; left: 15px; background: var(--accent-color); color: white; padding: 5px 12px; border-radius: 50px; font-size: 0.75rem; font-weight: 600;">Comedy Shows</div>
+    <div class="official-badge"><i class="fa-solid fa-star"></i> Official</div>
+    </div>
+    <div class="event-details" style="padding: 20px; display: flex; flex-direction: column; gap: 10px; flex-grow: 1;">
+    <h3 style="font-size: 1.1rem; line-height: 1.4;">Stand Up Special: The Sarcastic Soul </h3>
+    <div style="display: flex; flex-direction: column; gap: 5px;">
+    <p style="color: var(--text-secondary); font-size: 0.85rem;"><i class="fa-regular fa-calendar" style="margin-right: 8px; color: var(--accent-color);"></i> May 12</p>
+    <p style="color: var(--text-secondary); font-size: 0.85rem;"><i class="fa-solid fa-language" style="margin-right: 8px; color: var(--accent-color);"></i> Tamil</p>
+    <p style="color: var(--text-primary); font-weight: 600; font-size: 1rem;"><i class="fa-solid fa-indian-rupee-sign" style="margin-right: 8px; color: var(--accent-color);"></i> ₹599</p>
+    </div>
+    <button class="btn-book-sm" style="width: 100%; margin-top: auto; padding: 10px; border-radius: 8px; border: 1px solid var(--accent-color); background: transparent; color: var(--accent-color); font-weight: 600; transition: all 0.3s;" onmouseover="this.style.background='var(--accent-color)'; this.style.color='white';" onmouseout="this.style.background='transparent'; this.style.color='var(--accent-color)';">Book Now</button>
+    </div>
+    </div>
+    <div class="event-card" data-category="Music Shows" data-language="English" data-price="1800" style="background: var(--card-bg); border-radius: 15px; overflow: hidden; display: flex; flex-direction: column; transition: transform 0.3s, box-shadow 0.3s; border: 1px solid var(--glass-border); cursor: pointer;" onmouseover="this.style.transform='scale(1.02)';" onmouseout="this.style.transform='scale(1)';">
+    <div class="event-img-container" style="height: 250px; position: relative;">
+    <img src="https://images.unsplash.com/photo-1470229722913-7c0e2dbbafd3?auto=format&fit=crop&q=80&w=600" alt="Rock the Night: Live Concert" style="height: 100%; width: 100%; object-fit: cover;">
+    <div style="position: absolute; top: 15px; left: 15px; background: var(--accent-color); color: white; padding: 5px 12px; border-radius: 50px; font-size: 0.75rem; font-weight: 600;">Music Shows</div>
+    <div class="official-badge"><i class="fa-solid fa-star"></i> Official</div>
+    </div>
+    <div class="event-details" style="padding: 20px; display: flex; flex-direction: column; gap: 10px; flex-grow: 1;">
+    <h3 style="font-size: 1.1rem; line-height: 1.4;">Rock the Night: Live Concert </h3>
+    <div style="display: flex; flex-direction: column; gap: 5px;">
+    <p style="color: var(--text-secondary); font-size: 0.85rem;"><i class="fa-regular fa-calendar" style="margin-right: 8px; color: var(--accent-color);"></i> May 15</p>
+    <p style="color: var(--text-secondary); font-size: 0.85rem;"><i class="fa-solid fa-language" style="margin-right: 8px; color: var(--accent-color);"></i> English</p>
+    <p style="color: var(--text-primary); font-weight: 600; font-size: 1rem;"><i class="fa-solid fa-indian-rupee-sign" style="margin-right: 8px; color: var(--accent-color);"></i> ₹1800</p>
+    </div>
+    <button class="btn-book-sm" style="width: 100%; margin-top: auto; padding: 10px; border-radius: 8px; border: 1px solid var(--accent-color); background: transparent; color: var(--accent-color); font-weight: 600; transition: all 0.3s;" onmouseover="this.style.background='var(--accent-color)'; this.style.color='white';" onmouseout="this.style.background='transparent'; this.style.color='var(--accent-color)';">Book Now</button>
+    </div>
+    </div>
+    <div class="event-card" data-category="Kids" data-language="English" data-price="1500" style="background: var(--card-bg); border-radius: 15px; overflow: hidden; display: flex; flex-direction: column; transition: transform 0.3s, box-shadow 0.3s; border: 1px solid var(--glass-border); cursor: pointer;" onmouseover="this.style.transform='scale(1.02)';" onmouseout="this.style.transform='scale(1)';">
+    <div class="event-img-container" style="height: 250px; position: relative;">
+    <img src="https://images.unsplash.com/photo-1541855492-581f618f69a0?auto=format&fit=crop&q=80&w=600" alt="Disney on Ice: Fairytale Journey" style="height: 100%; width: 100%; object-fit: cover;">
+    <div style="position: absolute; top: 15px; left: 15px; background: var(--accent-color); color: white; padding: 5px 12px; border-radius: 50px; font-size: 0.75rem; font-weight: 600;">Kids</div>
+    <div class="official-badge"><i class="fa-solid fa-star"></i> Official</div>
+    </div>
+    <div class="event-details" style="padding: 20px; display: flex; flex-direction: column; gap: 10px; flex-grow: 1;">
+    <h3 style="font-size: 1.1rem; line-height: 1.4;">Disney on Ice: Fairytale Journey </h3>
+    <div style="display: flex; flex-direction: column; gap: 5px;">
+    <p style="color: var(--text-secondary); font-size: 0.85rem;"><i class="fa-regular fa-calendar" style="margin-right: 8px; color: var(--accent-color);"></i> May 20</p>
+    <p style="color: var(--text-secondary); font-size: 0.85rem;"><i class="fa-solid fa-language" style="margin-right: 8px; color: var(--accent-color);"></i> English</p>
+    <p style="color: var(--text-primary); font-weight: 600; font-size: 1rem;"><i class="fa-solid fa-indian-rupee-sign" style="margin-right: 8px; color: var(--accent-color);"></i> ₹1500</p>
+    </div>
+    <button class="btn-book-sm" style="width: 100%; margin-top: auto; padding: 10px; border-radius: 8px; border: 1px solid var(--accent-color); background: transparent; color: var(--accent-color); font-weight: 600; transition: all 0.3s;" onmouseover="this.style.background='var(--accent-color)'; this.style.color='white';" onmouseout="this.style.background='transparent'; this.style.color='var(--accent-color)';">Book Now</button>
+    </div>
+    </div>
+    <div class="event-card" data-category="Meetups" data-language="Hindi" data-price="150" style="background: var(--card-bg); border-radius: 15px; overflow: hidden; display: flex; flex-direction: column; transition: transform 0.3s, box-shadow 0.3s; border: 1px solid var(--glass-border); cursor: pointer;" onmouseover="this.style.transform='scale(1.02)';" onmouseout="this.style.transform='scale(1)';">
+    <div class="event-img-container" style="height: 250px; position: relative;">
+    <img src="https://images.unsplash.com/photo-1455390582262-044cdead277a?auto=format&fit=crop&q=80&w=600" alt="Creative Writers Guild Meetup" style="height: 100%; width: 100%; object-fit: cover;">
+    <div style="position: absolute; top: 15px; left: 15px; background: var(--accent-color); color: white; padding: 5px 12px; border-radius: 50px; font-size: 0.75rem; font-weight: 600;">Meetups</div>
+    <div class="official-badge"><i class="fa-solid fa-star"></i> Official</div>
+    </div>
+    <div class="event-details" style="padding: 20px; display: flex; flex-direction: column; gap: 10px; flex-grow: 1;">
+    <h3 style="font-size: 1.1rem; line-height: 1.4;">Creative Writers Guild Meetup </h3>
+    <div style="display: flex; flex-direction: column; gap: 5px;">
+    <p style="color: var(--text-secondary); font-size: 0.85rem;"><i class="fa-regular fa-calendar" style="margin-right: 8px; color: var(--accent-color);"></i> May 22</p>
+    <p style="color: var(--text-secondary); font-size: 0.85rem;"><i class="fa-solid fa-language" style="margin-right: 8px; color: var(--accent-color);"></i> Hindi</p>
+    <p style="color: var(--text-primary); font-weight: 600; font-size: 1rem;"><i class="fa-solid fa-indian-rupee-sign" style="margin-right: 8px; color: var(--accent-color);"></i> ₹150</p>
+    </div>
+    <button class="btn-book-sm" style="width: 100%; margin-top: auto; padding: 10px; border-radius: 8px; border: 1px solid var(--accent-color); background: transparent; color: var(--accent-color); font-weight: 600; transition: all 0.3s;" onmouseover="this.style.background='var(--accent-color)'; this.style.color='white';" onmouseout="this.style.background='transparent'; this.style.color='var(--accent-color)';">Book Now</button>
+    </div>
+    </div>
+    <div class="event-card" data-category="Exhibitions" data-language="Kannada" data-price="350" style="background: var(--card-bg); border-radius: 15px; overflow: hidden; display: flex; flex-direction: column; transition: transform 0.3s, box-shadow 0.3s; border: 1px solid var(--glass-border); cursor: pointer;" onmouseover="this.style.transform='scale(1.02)';" onmouseout="this.style.transform='scale(1)';">
+    <div class="event-img-container" style="height: 250px; position: relative;">
+    <img src="https://images.unsplash.com/photo-1568515387631-8b650bbcdb90?auto=format&fit=crop&q=80&w=600" alt="Ancient Wonders: History Exhibition" style="height: 100%; width: 100%; object-fit: cover;">
+    <div style="position: absolute; top: 15px; left: 15px; background: var(--accent-color); color: white; padding: 5px 12px; border-radius: 50px; font-size: 0.75rem; font-weight: 600;">Exhibitions</div>
+    <div class="official-badge"><i class="fa-solid fa-star"></i> Official</div>
+    </div>
+    <div class="event-details" style="padding: 20px; display: flex; flex-direction: column; gap: 10px; flex-grow: 1;">
+    <h3 style="font-size: 1.1rem; line-height: 1.4;">Ancient Wonders: History Exhibition </h3>
+    <div style="display: flex; flex-direction: column; gap: 5px;">
+    <p style="color: var(--text-secondary); font-size: 0.85rem;"><i class="fa-regular fa-calendar" style="margin-right: 8px; color: var(--accent-color);"></i> May 25</p>
+    <p style="color: var(--text-secondary); font-size: 0.85rem;"><i class="fa-solid fa-language" style="margin-right: 8px; color: var(--accent-color);"></i> Kannada</p>
+    <p style="color: var(--text-primary); font-weight: 600; font-size: 1rem;"><i class="fa-solid fa-indian-rupee-sign" style="margin-right: 8px; color: var(--accent-color);"></i> ₹350</p>
+    </div>
+    <button class="btn-book-sm" style="width: 100%; margin-top: auto; padding: 10px; border-radius: 8px; border: 1px solid var(--accent-color); background: transparent; color: var(--accent-color); font-weight: 600; transition: all 0.3s;" onmouseover="this.style.background='var(--accent-color)'; this.style.color='white';" onmouseout="this.style.background='transparent'; this.style.color='var(--accent-color)';">Book Now</button>
+    </div>
+    </div>
+    <div class="event-card" data-category="Performances" data-language="English" data-price="1400" style="background: var(--card-bg); border-radius: 15px; overflow: hidden; display: flex; flex-direction: column; transition: transform 0.3s, box-shadow 0.3s; border: 1px solid var(--glass-border); cursor: pointer;" onmouseover="this.style.transform='scale(1.02)';" onmouseout="this.style.transform='scale(1)';">
+    <div class="event-img-container" style="height: 250px; position: relative;">
+    <img src="https://images.unsplash.com/photo-1507676184212-d03ab07a01bf?auto=format&fit=crop&q=80&w=600" alt="Broadway Nights: Musical Performance" style="height: 100%; width: 100%; object-fit: cover;">
+    <div style="position: absolute; top: 15px; left: 15px; background: var(--accent-color); color: white; padding: 5px 12px; border-radius: 50px; font-size: 0.75rem; font-weight: 600;">Performances</div>
+    <div class="official-badge"><i class="fa-solid fa-star"></i> Official</div>
+    </div>
+    <div class="event-details" style="padding: 20px; display: flex; flex-direction: column; gap: 10px; flex-grow: 1;">
+    <h3 style="font-size: 1.1rem; line-height: 1.4;">Broadway Nights: Musical Performance </h3>
+    <div style="display: flex; flex-direction: column; gap: 5px;">
+    <p style="color: var(--text-secondary); font-size: 0.85rem;"><i class="fa-regular fa-calendar" style="margin-right: 8px; color: var(--accent-color);"></i> May 30</p>
+    <p style="color: var(--text-secondary); font-size: 0.85rem;"><i class="fa-solid fa-language" style="margin-right: 8px; color: var(--accent-color);"></i> English</p>
+    <p style="color: var(--text-primary); font-weight: 600; font-size: 1rem;"><i class="fa-solid fa-indian-rupee-sign" style="margin-right: 8px; color: var(--accent-color);"></i> ₹1400</p>
+    </div>
+    <button class="btn-book-sm" style="width: 100%; margin-top: auto; padding: 10px; border-radius: 8px; border: 1px solid var(--accent-color); background: transparent; color: var(--accent-color); font-weight: 600; transition: all 0.3s;" onmouseover="this.style.background='var(--accent-color)'; this.style.color='white';" onmouseout="this.style.background='transparent'; this.style.color='var(--accent-color)';">Book Now</button>
+    </div>
+    </div>
+    <div class="event-card" data-category="Conferences" data-language="English" data-price="1950" style="background: var(--card-bg); border-radius: 15px; overflow: hidden; display: flex; flex-direction: column; transition: transform 0.3s, box-shadow 0.3s; border: 1px solid var(--glass-border); cursor: pointer;" onmouseover="this.style.transform='scale(1.02)';" onmouseout="this.style.transform='scale(1)';">
+    <div class="event-img-container" style="height: 250px; position: relative;">
+    <img src="https://images.unsplash.com/photo-1579684385127-1ef15d508118?auto=format&fit=crop&q=80&w=600" alt="MedTech Summit: Healthcare 2024" style="height: 100%; width: 100%; object-fit: cover;">
+    <div style="position: absolute; top: 15px; left: 15px; background: var(--accent-color); color: white; padding: 5px 12px; border-radius: 50px; font-size: 0.75rem; font-weight: 600;">Conferences</div>
+    <div class="official-badge"><i class="fa-solid fa-star"></i> Official</div>
+    </div>
+    <div class="event-details" style="padding: 20px; display: flex; flex-direction: column; gap: 10px; flex-grow: 1;">
+    <h3 style="font-size: 1.1rem; line-height: 1.4;">MedTech Summit: Healthcare 2024 </h3>
+    <div style="display: flex; flex-direction: column; gap: 5px;">
+    <p style="color: var(--text-secondary); font-size: 0.85rem;"><i class="fa-regular fa-calendar" style="margin-right: 8px; color: var(--accent-color);"></i> Jun 2</p>
+    <p style="color: var(--text-secondary); font-size: 0.85rem;"><i class="fa-solid fa-language" style="margin-right: 8px; color: var(--accent-color);"></i> English</p>
+    <p style="color: var(--text-primary); font-weight: 600; font-size: 1rem;"><i class="fa-solid fa-indian-rupee-sign" style="margin-right: 8px; color: var(--accent-color);"></i> ₹1950</p>
+    </div>
+    <button class="btn-book-sm" style="width: 100%; margin-top: auto; padding: 10px; border-radius: 8px; border: 1px solid var(--accent-color); background: transparent; color: var(--accent-color); font-weight: 600; transition: all 0.3s;" onmouseover="this.style.background='var(--accent-color)'; this.style.color='white';" onmouseout="this.style.background='transparent'; this.style.color='var(--accent-color)';">Book Now</button>
+    </div>
+    </div>
+    <div class="event-card" data-category="Workshops" data-language="Marathi" data-price="950" style="background: var(--card-bg); border-radius: 15px; overflow: hidden; display: flex; flex-direction: column; transition: transform 0.3s, box-shadow 0.3s; border: 1px solid var(--glass-border); cursor: pointer;" onmouseover="this.style.transform='scale(1.02)';" onmouseout="this.style.transform='scale(1)';">
+    <div class="event-img-container" style="height: 250px; position: relative;">
+    <img src="https://images.unsplash.com/photo-1565191999001-551c187427bb?auto=format&fit=crop&q=80&w=600" alt="Pottery & Ceramics Workshop" style="height: 100%; width: 100%; object-fit: cover;">
+    <div style="position: absolute; top: 15px; left: 15px; background: var(--accent-color); color: white; padding: 5px 12px; border-radius: 50px; font-size: 0.75rem; font-weight: 600;">Workshops</div>
+    <div class="official-badge"><i class="fa-solid fa-star"></i> Official</div>
+    </div>
+    <div class="event-details" style="padding: 20px; display: flex; flex-direction: column; gap: 10px; flex-grow: 1;">
+    <h3 style="font-size: 1.1rem; line-height: 1.4;">Pottery & Ceramics Workshop </h3>
+    <div style="display: flex; flex-direction: column; gap: 5px;">
+    <p style="color: var(--text-secondary); font-size: 0.85rem;"><i class="fa-regular fa-calendar" style="margin-right: 8px; color: var(--accent-color);"></i> Jun 5</p>
+    <p style="color: var(--text-secondary); font-size: 0.85rem;"><i class="fa-solid fa-language" style="margin-right: 8px; color: var(--accent-color);"></i> Marathi</p>
+    <p style="color: var(--text-primary); font-weight: 600; font-size: 1rem;"><i class="fa-solid fa-indian-rupee-sign" style="margin-right: 8px; color: var(--accent-color);"></i> ₹950</p>
+    </div>
+    <button class="btn-book-sm" style="width: 100%; margin-top: auto; padding: 10px; border-radius: 8px; border: 1px solid var(--accent-color); background: transparent; color: var(--accent-color); font-weight: 600; transition: all 0.3s;" onmouseover="this.style.background='var(--accent-color)'; this.style.color='white';" onmouseout="this.style.background='transparent'; this.style.color='var(--accent-color)';">Book Now</button>
+    </div>
+    </div>
+    <div class="event-card" data-category="Comedy Shows" data-language="Hindi" data-price="250" style="background: var(--card-bg); border-radius: 15px; overflow: hidden; display: flex; flex-direction: column; transition: transform 0.3s, box-shadow 0.3s; border: 1px solid var(--glass-border); cursor: pointer;" onmouseover="this.style.transform='scale(1.02)';" onmouseout="this.style.transform='scale(1)';">
+    <div class="event-img-container" style="height: 250px; position: relative;">
+    <img src="https://images.unsplash.com/photo-1493225457124-a3eb161ffa5f?auto=format&fit=crop&q=80&w=600" alt="Open Mic Night: Fresh Talent" style="height: 100%; width: 100%; object-fit: cover;">
+    <div style="position: absolute; top: 15px; left: 15px; background: var(--accent-color); color: white; padding: 5px 12px; border-radius: 50px; font-size: 0.75rem; font-weight: 600;">Comedy Shows</div>
+    <div class="official-badge"><i class="fa-solid fa-star"></i> Official</div>
+    </div>
+    <div class="event-details" style="padding: 20px; display: flex; flex-direction: column; gap: 10px; flex-grow: 1;">
+    <h3 style="font-size: 1.1rem; line-height: 1.4;">Open Mic Night: Fresh Talent </h3>
+    <div style="display: flex; flex-direction: column; gap: 5px;">
+    <p style="color: var(--text-secondary); font-size: 0.85rem;"><i class="fa-regular fa-calendar" style="margin-right: 8px; color: var(--accent-color);"></i> Jun 10</p>
+    <p style="color: var(--text-secondary); font-size: 0.85rem;"><i class="fa-solid fa-language" style="margin-right: 8px; color: var(--accent-color);"></i> Hindi</p>
+    <p style="color: var(--text-primary); font-weight: 600; font-size: 1rem;"><i class="fa-solid fa-indian-rupee-sign" style="margin-right: 8px; color: var(--accent-color);"></i> ₹250</p>
+    </div>
+    <button class="btn-book-sm" style="width: 100%; margin-top: auto; padding: 10px; border-radius: 8px; border: 1px solid var(--accent-color); background: transparent; color: var(--accent-color); font-weight: 600; transition: all 0.3s;" onmouseover="this.style.background='var(--accent-color)'; this.style.color='white';" onmouseout="this.style.background='transparent'; this.style.color='var(--accent-color)';">Book Now</button>
+    </div>
+    </div>
+    <div class="event-card" data-category="Music Shows" data-language="English" data-price="1600" style="background: var(--card-bg); border-radius: 15px; overflow: hidden; display: flex; flex-direction: column; transition: transform 0.3s, box-shadow 0.3s; border: 1px solid var(--glass-border); cursor: pointer;" onmouseover="this.style.transform='scale(1.02)';" onmouseout="this.style.transform='scale(1)';">
+    <div class="event-img-container" style="height: 250px; position: relative;">
+    <img src="https://images.unsplash.com/photo-1492684223066-81342ee5ff30?auto=format&fit=crop&q=80&w=600" alt="Electronic Beats: Rave Party" style="height: 100%; width: 100%; object-fit: cover;">
+    <div style="position: absolute; top: 15px; left: 15px; background: var(--accent-color); color: white; padding: 5px 12px; border-radius: 50px; font-size: 0.75rem; font-weight: 600;">Music Shows</div>
+    <div class="official-badge"><i class="fa-solid fa-star"></i> Official</div>
+    </div>
+    <div class="event-details" style="padding: 20px; display: flex; flex-direction: column; gap: 10px; flex-grow: 1;">
+    <h3 style="font-size: 1.1rem; line-height: 1.4;">Electronic Beats: Rave Party </h3>
+    <div style="display: flex; flex-direction: column; gap: 5px;">
+    <p style="color: var(--text-secondary); font-size: 0.85rem;"><i class="fa-regular fa-calendar" style="margin-right: 8px; color: var(--accent-color);"></i> Jun 15</p>
+    <p style="color: var(--text-secondary); font-size: 0.85rem;"><i class="fa-solid fa-language" style="margin-right: 8px; color: var(--accent-color);"></i> English</p>
+    <p style="color: var(--text-primary); font-weight: 600; font-size: 1rem;"><i class="fa-solid fa-indian-rupee-sign" style="margin-right: 8px; color: var(--accent-color);"></i> ₹1600</p>
+    </div>
+    <button class="btn-book-sm" style="width: 100%; margin-top: auto; padding: 10px; border-radius: 8px; border: 1px solid var(--accent-color); background: transparent; color: var(--accent-color); font-weight: 600; transition: all 0.3s;" onmouseover="this.style.background='var(--accent-color)'; this.style.color='white';" onmouseout="this.style.background='transparent'; this.style.color='var(--accent-color)';">Book Now</button>
+    </div>
+    </div>
+    <div class="event-card" data-category="Kids" data-language="Telugu" data-price="399" style="background: var(--card-bg); border-radius: 15px; overflow: hidden; display: flex; flex-direction: column; transition: transform 0.3s, box-shadow 0.3s; border: 1px solid var(--glass-border); cursor: pointer;" onmouseover="this.style.transform='scale(1.02)';" onmouseout="this.style.transform='scale(1)';">
+    <div class="event-img-container" style="height: 250px; position: relative;">
+    <img src="https://images.unsplash.com/photo-1578985545062-69928b1d9587?auto=format&fit=crop&q=80&w=600" alt="Puppet Theatre: Stories of India" style="height: 100%; width: 100%; object-fit: cover;">
+    <div style="position: absolute; top: 15px; left: 15px; background: var(--accent-color); color: white; padding: 5px 12px; border-radius: 50px; font-size: 0.75rem; font-weight: 600;">Kids</div>
+    <div class="official-badge"><i class="fa-solid fa-star"></i> Official</div>
+    </div>
+    <div class="event-details" style="padding: 20px; display: flex; flex-direction: column; gap: 10px; flex-grow: 1;">
+    <h3 style="font-size: 1.1rem; line-height: 1.4;">Puppet Theatre: Stories of India </h3>
+    <div style="display: flex; flex-direction: column; gap: 5px;">
+    <p style="color: var(--text-secondary); font-size: 0.85rem;"><i class="fa-regular fa-calendar" style="margin-right: 8px; color: var(--accent-color);"></i> Jun 18</p>
+    <p style="color: var(--text-secondary); font-size: 0.85rem;"><i class="fa-solid fa-language" style="margin-right: 8px; color: var(--accent-color);"></i> Telugu</p>
+    <p style="color: var(--text-primary); font-weight: 600; font-size: 1rem;"><i class="fa-solid fa-indian-rupee-sign" style="margin-right: 8px; color: var(--accent-color);"></i> ₹399</p>
+    </div>
+    <button class="btn-book-sm" style="width: 100%; margin-top: auto; padding: 10px; border-radius: 8px; border: 1px solid var(--accent-color); background: transparent; color: var(--accent-color); font-weight: 600; transition: all 0.3s;" onmouseover="this.style.background='var(--accent-color)'; this.style.color='white';" onmouseout="this.style.background='transparent'; this.style.color='var(--accent-color)';">Book Now</button>
+    </div>
+    </div>
+    <div class="event-card" data-category="Meetups" data-language="English" data-price="0" style="background: var(--card-bg); border-radius: 15px; overflow: hidden; display: flex; flex-direction: column; transition: transform 0.3s, box-shadow 0.3s; border: 1px solid var(--glass-border); cursor: pointer;" onmouseover="this.style.transform='scale(1.02)';" onmouseout="this.style.transform='scale(1)';">
+    <div class="event-img-container" style="height: 250px; position: relative;">
+    <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&q=80&w=600" alt="Digital Marketing 101 Networking" style="height: 100%; width: 100%; object-fit: cover;">
+    <div style="position: absolute; top: 15px; left: 15px; background: var(--accent-color); color: white; padding: 5px 12px; border-radius: 50px; font-size: 0.75rem; font-weight: 600;">Meetups</div>
+    <div class="official-badge"><i class="fa-solid fa-star"></i> Official</div>
+    </div>
+    <div class="event-details" style="padding: 20px; display: flex; flex-direction: column; gap: 10px; flex-grow: 1;">
+    <h3 style="font-size: 1.1rem; line-height: 1.4;">Digital Marketing 101 Networking </h3>
+    <div style="display: flex; flex-direction: column; gap: 5px;">
+    <p style="color: var(--text-secondary); font-size: 0.85rem;"><i class="fa-regular fa-calendar" style="margin-right: 8px; color: var(--accent-color);"></i> Jun 22</p>
+    <p style="color: var(--text-secondary); font-size: 0.85rem;"><i class="fa-solid fa-language" style="margin-right: 8px; color: var(--accent-color);"></i> English</p>
+    <p style="color: var(--text-primary); font-weight: 600; font-size: 1rem;"><i class="fa-solid fa-indian-rupee-sign" style="margin-right: 8px; color: var(--accent-color);"></i> Free</p>
+    </div>
+    <button class="btn-book-sm" style="width: 100%; margin-top: auto; padding: 10px; border-radius: 8px; border: 1px solid var(--accent-color); background: transparent; color: var(--accent-color); font-weight: 600; transition: all 0.3s;" onmouseover="this.style.background='var(--accent-color)'; this.style.color='white';" onmouseout="this.style.background='transparent'; this.style.color='var(--accent-color)';">Book Now</button>
+    </div>
+    </div>
+    <div class="event-card" data-category="Exhibitions" data-language="English" data-price="650" style="background: var(--card-bg); border-radius: 15px; overflow: hidden; display: flex; flex-direction: column; transition: transform 0.3s, box-shadow 0.3s; border: 1px solid var(--glass-border); cursor: pointer;" onmouseover="this.style.transform='scale(1.02)';" onmouseout="this.style.transform='scale(1)';">
+    <div class="event-img-container" style="height: 250px; position: relative;">
+    <img src="https://images.unsplash.com/photo-1503376780353-7e6692767b70?auto=format&fit=crop&q=80&w=600" alt="Automotive Expo: Supercars 2024" style="height: 100%; width: 100%; object-fit: cover;">
+    <div style="position: absolute; top: 15px; left: 15px; background: var(--accent-color); color: white; padding: 5px 12px; border-radius: 50px; font-size: 0.75rem; font-weight: 600;">Exhibitions</div>
+    <div class="official-badge"><i class="fa-solid fa-star"></i> Official</div>
+    </div>
+    <div class="event-details" style="padding: 20px; display: flex; flex-direction: column; gap: 10px; flex-grow: 1;">
+    <h3 style="font-size: 1.1rem; line-height: 1.4;">Automotive Expo: Supercars 2024 </h3>
+    <div style="display: flex; flex-direction: column; gap: 5px;">
+    <p style="color: var(--text-secondary); font-size: 0.85rem;"><i class="fa-regular fa-calendar" style="margin-right: 8px; color: var(--accent-color);"></i> Jun 25</p>
+    <p style="color: var(--text-secondary); font-size: 0.85rem;"><i class="fa-solid fa-language" style="margin-right: 8px; color: var(--accent-color);"></i> English</p>
+    <p style="color: var(--text-primary); font-weight: 600; font-size: 1rem;"><i class="fa-solid fa-indian-rupee-sign" style="margin-right: 8px; color: var(--accent-color);"></i> ₹650</p>
+    </div>
+    <button class="btn-book-sm" style="width: 100%; margin-top: auto; padding: 10px; border-radius: 8px; border: 1px solid var(--accent-color); background: transparent; color: var(--accent-color); font-weight: 600; transition: all 0.3s;" onmouseover="this.style.background='var(--accent-color)'; this.style.color='white';" onmouseout="this.style.background='transparent'; this.style.color='var(--accent-color)';">Book Now</button>
+    </div>
+    </div>
+    <div class="event-card" data-category="Performances" data-language="Malayalam" data-price="800" style="background: var(--card-bg); border-radius: 15px; overflow: hidden; display: flex; flex-direction: column; transition: transform 0.3s, box-shadow 0.3s; border: 1px solid var(--glass-border); cursor: pointer;" onmouseover="this.style.transform='scale(1.02)';" onmouseout="this.style.transform='scale(1)';">
+    <div class="event-img-container" style="height: 250px; position: relative;">
+    <img src="https://images.unsplash.com/photo-1504609773096-104ff2c73ba4?auto=format&fit=crop&q=80&w=600" alt="Hip Hop Dance Battle" style="height: 100%; width: 100%; object-fit: cover;">
+    <div style="position: absolute; top: 15px; left: 15px; background: var(--accent-color); color: white; padding: 5px 12px; border-radius: 50px; font-size: 0.75rem; font-weight: 600;">Performances</div>
+    <div class="official-badge"><i class="fa-solid fa-star"></i> Official</div>
+    </div>
+    <div class="event-details" style="padding: 20px; display: flex; flex-direction: column; gap: 10px; flex-grow: 1;">
+    <h3 style="font-size: 1.1rem; line-height: 1.4;">Hip Hop Dance Battle </h3>
+    <div style="display: flex; flex-direction: column; gap: 5px;">
+    <p style="color: var(--text-secondary); font-size: 0.85rem;"><i class="fa-regular fa-calendar" style="margin-right: 8px; color: var(--accent-color);"></i> Jun 28</p>
+    <p style="color: var(--text-secondary); font-size: 0.85rem;"><i class="fa-solid fa-language" style="margin-right: 8px; color: var(--accent-color);"></i> Malayalam</p>
+    <p style="color: var(--text-primary); font-weight: 600; font-size: 1rem;"><i class="fa-solid fa-indian-rupee-sign" style="margin-right: 8px; color: var(--accent-color);"></i> ₹800</p>
+    </div>
+    <button class="btn-book-sm" style="width: 100%; margin-top: auto; padding: 10px; border-radius: 8px; border: 1px solid var(--accent-color); background: transparent; color: var(--accent-color); font-weight: 600; transition: all 0.3s;" onmouseover="this.style.background='var(--accent-color)'; this.style.color='white';" onmouseout="this.style.background='transparent'; this.style.color='var(--accent-color)';">Book Now</button>
+    </div>
+    </div>
+    <div class="event-card" data-category="Conferences" data-language="English" data-price="2000" style="background: var(--card-bg); border-radius: 15px; overflow: hidden; display: flex; flex-direction: column; transition: transform 0.3s, box-shadow 0.3s; border: 1px solid var(--glass-border); cursor: pointer;" onmouseover="this.style.transform='scale(1.02)';" onmouseout="this.style.transform='scale(1)';">
+    <div class="event-img-container" style="height: 250px; position: relative;">
+    <img src="https://images.unsplash.com/photo-1509062522246-3755977927d7?auto=format&fit=crop&q=80&w=600" alt="Quantum Computing: Deep Dive" style="height: 100%; width: 100%; object-fit: cover;">
+    <div style="position: absolute; top: 15px; left: 15px; background: var(--accent-color); color: white; padding: 5px 12px; border-radius: 50px; font-size: 0.75rem; font-weight: 600;">Conferences</div>
+    <div class="official-badge"><i class="fa-solid fa-star"></i> Official</div>
+    </div>
+    <div class="event-details" style="padding: 20px; display: flex; flex-direction: column; gap: 10px; flex-grow: 1;">
+    <h3 style="font-size: 1.1rem; line-height: 1.4;">Quantum Computing: Deep Dive </h3>
+    <div style="display: flex; flex-direction: column; gap: 5px;">
+    <p style="color: var(--text-secondary); font-size: 0.85rem;"><i class="fa-regular fa-calendar" style="margin-right: 8px; color: var(--accent-color);"></i> Jul 5</p>
+    <p style="color: var(--text-secondary); font-size: 0.85rem;"><i class="fa-solid fa-language" style="margin-right: 8px; color: var(--accent-color);"></i> English</p>
+    <p style="color: var(--text-primary); font-weight: 600; font-size: 1rem;"><i class="fa-solid fa-indian-rupee-sign" style="margin-right: 8px; color: var(--accent-color);"></i> ₹2000</p>
+    </div>
+    <button class="btn-book-sm" style="width: 100%; margin-top: auto; padding: 10px; border-radius: 8px; border: 1px solid var(--accent-color); background: transparent; color: var(--accent-color); font-weight: 600; transition: all 0.3s;" onmouseover="this.style.background='var(--accent-color)'; this.style.color='white';" onmouseout="this.style.background='transparent'; this.style.color='var(--accent-color)';">Book Now</button>
+    </div>
+    </div>
+    </div>
+    </div>
+    </div>
+    </section>
+    <!-- Offers Section -->
+    <section class="section-offers" id="offers-section" style="margin-top: 50px; display: none;">
+    <div class="section-header" style="margin-bottom: 25px;">
+    <h2 style="font-size: 1.8rem; font-weight: 700; background: linear-gradient(90deg, #ffffff, #3b82f6); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">Exclusive Offers & Discounts</h2>
+    <p style="color: var(--text-secondary); margin-top: 5px;">Grab the best curated deals for your next blockbuster or event.</p>
+    </div>
+    <div class="offers-grid" style="display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 25px;">
+    <div class="offer-card" style="background: linear-gradient(145deg, #1e293b, #0f172a); border: 2px dashed rgba(59, 130, 246, 0.5); border-radius: 15px; padding: 25px; display: flex; flex-direction: column; gap: 15px; transition: transform 0.3s, box-shadow 0.3s; position: relative; overflow: hidden; box-shadow: 0 10px 30px rgba(0,0,0,0.2);">
+    <div style="background: var(--accent-color); color: white; position: absolute; top: 20px; right: -35px; transform: rotate(45deg); padding: 5px 40px; font-weight: 800; font-size: 0.75rem; letter-spacing: 1px; box-shadow: 0 4px 15px rgba(0,0,0,0.4); text-transform: uppercase;">BOGO</div>
+    <div class="offer-icon" style="font-size: 2.5rem; color: var(--accent-color); background: rgba(59, 130, 246, 0.1); width: 60px; height: 60px; display: flex; align-items: center; justify-content: center; border-radius: 50%;">
+    <i class="fa-solid fa-tags"></i>
+    </div>
+    <div style="flex-grow: 1;">
+    <h3 style="font-size: 1.3rem; margin-bottom: 8px; font-weight: 600;">Buy 1 Get 1 Free </h3>
+    <p style="color: var(--text-secondary); font-size: 0.95rem; line-height: 1.5;">Use code <strong style='color: white;'>BOGO24</strong> on select weekend blockbuster movies.</p>
+    </div>
+    <button class="btn-book-sm" style="margin-top: 10px; width: 100%; border: 1px solid var(--accent-color); background: rgba(59, 130, 246, 0.1); color: var(--accent-color); transition: all 0.3s; font-size: 0.9rem; padding: 10px;" onmouseover="this.style.background='var(--accent-color)'; this.style.color='white';" onmouseout="this.style.background='rgba(59, 130, 246, 0.1)'; this.style.color='var(--accent-color)';">Copy Code</button>
+    </div>
+    <div class="offer-card" style="background: linear-gradient(145deg, #1e293b, #0f172a); border: 2px dashed rgba(59, 130, 246, 0.5); border-radius: 15px; padding: 25px; display: flex; flex-direction: column; gap: 15px; transition: transform 0.3s, box-shadow 0.3s; position: relative; overflow: hidden; box-shadow: 0 10px 30px rgba(0,0,0,0.2);">
+    <div style="background: var(--accent-color); color: white; position: absolute; top: 20px; right: -35px; transform: rotate(45deg); padding: 5px 40px; font-weight: 800; font-size: 0.75rem; letter-spacing: 1px; box-shadow: 0 4px 15px rgba(0,0,0,0.4); text-transform: uppercase;">50% OFF</div>
+    <div class="offer-icon" style="font-size: 2.5rem; color: var(--accent-color); background: rgba(59, 130, 246, 0.1); width: 60px; height: 60px; display: flex; align-items: center; justify-content: center; border-radius: 50%;">
+    <i class="fa-solid fa-user-plus"></i>
+    </div>
+    <div style="flex-grow: 1;">
+    <h3 style="font-size: 1.3rem; margin-bottom: 8px; font-weight: 600;">First App Booking </h3>
+    <p style="color: var(--text-secondary); font-size: 0.95rem; line-height: 1.5;">Get 50% Off up to ₹150 on your very first ticket booking. Code: <strong style='color: white;'>WELCOME50</strong></p>
+    </div>
+    <button class="btn-book-sm" style="margin-top: 10px; width: 100%; border: 1px solid var(--accent-color); background: rgba(59, 130, 246, 0.1); color: var(--accent-color); transition: all 0.3s; font-size: 0.9rem; padding: 10px;" onmouseover="this.style.background='var(--accent-color)'; this.style.color='white';" onmouseout="this.style.background='rgba(59, 130, 246, 0.1)'; this.style.color='var(--accent-color)';">Copy Code</button>
+    </div>
+    <div class="offer-card" style="background: linear-gradient(145deg, #1e293b, #0f172a); border: 2px dashed rgba(59, 130, 246, 0.5); border-radius: 15px; padding: 25px; display: flex; flex-direction: column; gap: 15px; transition: transform 0.3s, box-shadow 0.3s; position: relative; overflow: hidden; box-shadow: 0 10px 30px rgba(0,0,0,0.2);">
+    <div style="background: var(--accent-color); color: white; position: absolute; top: 20px; right: -35px; transform: rotate(45deg); padding: 5px 40px; font-weight: 800; font-size: 0.75rem; letter-spacing: 1px; box-shadow: 0 4px 15px rgba(0,0,0,0.4); text-transform: uppercase;">₹200 OFF</div>
+    <div class="offer-icon" style="font-size: 2.5rem; color: var(--accent-color); background: rgba(59, 130, 246, 0.1); width: 60px; height: 60px; display: flex; align-items: center; justify-content: center; border-radius: 50%;">
+    <i class="fa-solid fa-credit-card"></i>
+    </div>
+    <div style="flex-grow: 1;">
+    <h3 style="font-size: 1.3rem; margin-bottom: 8px; font-weight: 600;">Credit Card Special </h3>
+    <p style="color: var(--text-secondary); font-size: 0.95rem; line-height: 1.5;">Flat ₹200 instant discount on ICICI & HDFC Bank Credit Cards.</p>
+    </div>
+    <button class="btn-book-sm" style="margin-top: 10px; width: 100%; border: 1px solid var(--accent-color); background: rgba(59, 130, 246, 0.1); color: var(--accent-color); transition: all 0.3s; font-size: 0.9rem; padding: 10px;" onmouseover="this.style.background='var(--accent-color)'; this.style.color='white';" onmouseout="this.style.background='rgba(59, 130, 246, 0.1)'; this.style.color='var(--accent-color)';">Apply Now</button>
+    </div>
+    <div class="offer-card" style="background: linear-gradient(145deg, #1e293b, #0f172a); border: 2px dashed rgba(59, 130, 246, 0.5); border-radius: 15px; padding: 25px; display: flex; flex-direction: column; gap: 15px; transition: transform 0.3s, box-shadow 0.3s; position: relative; overflow: hidden; box-shadow: 0 10px 30px rgba(0,0,0,0.2);">
+    <div style="background: var(--accent-color); color: white; position: absolute; top: 20px; right: -35px; transform: rotate(45deg); padding: 5px 40px; font-weight: 800; font-size: 0.75rem; letter-spacing: 1px; box-shadow: 0 4px 15px rgba(0,0,0,0.4); text-transform: uppercase;">CASHBACK</div>
+    <div class="offer-icon" style="font-size: 2.5rem; color: var(--accent-color); background: rgba(59, 130, 246, 0.1); width: 60px; height: 60px; display: flex; align-items: center; justify-content: center; border-radius: 50%;">
+    <i class="fa-solid fa-mobile-screen"></i>
+    </div>
+    <div style="flex-grow: 1;">
+    <h3 style="font-size: 1.3rem; margin-bottom: 8px; font-weight: 600;">UPI Assured Cashback </h3>
+    <p style="color: var(--text-secondary); font-size: 0.95rem; line-height: 1.5;">Win up to ₹100 cashback using PhonePe, GPay, or Paytm UPI.</p>
+    </div>
+    <button class="btn-book-sm" style="margin-top: 10px; width: 100%; border: 1px solid var(--accent-color); background: rgba(59, 130, 246, 0.1); color: var(--accent-color); transition: all 0.3s; font-size: 0.9rem; padding: 10px;" onmouseover="this.style.background='var(--accent-color)'; this.style.color='white';" onmouseout="this.style.background='rgba(59, 130, 246, 0.1)'; this.style.color='var(--accent-color)';">Pay via UPI</button>
+    </div>
+    <div class="offer-card" style="background: linear-gradient(145deg, #1e293b, #0f172a); border: 2px dashed rgba(59, 130, 246, 0.5); border-radius: 15px; padding: 25px; display: flex; flex-direction: column; gap: 15px; transition: transform 0.3s, box-shadow 0.3s; position: relative; overflow: hidden; box-shadow: 0 10px 30px rgba(0,0,0,0.2);">
+    <div style="background: var(--accent-color); color: white; position: absolute; top: 20px; right: -35px; transform: rotate(45deg); padding: 5px 40px; font-weight: 800; font-size: 0.75rem; letter-spacing: 1px; box-shadow: 0 4px 15px rgba(0,0,0,0.4); text-transform: uppercase;">20% OFF</div>
+    <div class="offer-icon" style="font-size: 2.5rem; color: var(--accent-color); background: rgba(59, 130, 246, 0.1); width: 60px; height: 60px; display: flex; align-items: center; justify-content: center; border-radius: 50%;">
+    <i class="fa-solid fa-graduation-cap"></i>
+    </div>
+    <div style="flex-grow: 1;">
+    <h3 style="font-size: 1.3rem; margin-bottom: 8px; font-weight: 600;">Student Discount </h3>
+    <p style="color: var(--text-secondary); font-size: 0.95rem; line-height: 1.5;">Show your valid Student ID at the counter and get 20% off on all formats.</p>
+    </div>
+    <button class="btn-book-sm" style="margin-top: 10px; width: 100%; border: 1px solid var(--accent-color); background: rgba(59, 130, 246, 0.1); color: var(--accent-color); transition: all 0.3s; font-size: 0.9rem; padding: 10px;" onmouseover="this.style.background='var(--accent-color)'; this.style.color='white';" onmouseout="this.style.background='rgba(59, 130, 246, 0.1)'; this.style.color='var(--accent-color)';">Verify ID</button>
+    </div>
+    <div class="offer-card" style="background: linear-gradient(145deg, #1e293b, #0f172a); border: 2px dashed rgba(59, 130, 246, 0.5); border-radius: 15px; padding: 25px; display: flex; flex-direction: column; gap: 15px; transition: transform 0.3s, box-shadow 0.3s; position: relative; overflow: hidden; box-shadow: 0 10px 30px rgba(0,0,0,0.2);">
+    <div style="background: var(--accent-color); color: white; position: absolute; top: 20px; right: -35px; transform: rotate(45deg); padding: 5px 40px; font-weight: 800; font-size: 0.75rem; letter-spacing: 1px; box-shadow: 0 4px 15px rgba(0,0,0,0.4); text-transform: uppercase;">FREE FOOD</div>
+    <div class="offer-icon" style="font-size: 2.5rem; color: var(--accent-color); background: rgba(59, 130, 246, 0.1); width: 60px; height: 60px; display: flex; align-items: center; justify-content: center; border-radius: 50%;">
+    <i class="fa-solid fa-bowl-food"></i>
+    </div>
+    <div style="flex-grow: 1;">
+    <h3 style="font-size: 1.3rem; margin-bottom: 8px; font-weight: 600;">Popcorn Combo Extra </h3>
+    <p style="color: var(--text-secondary); font-size: 0.95rem; line-height: 1.5;">Get a completely free Large Popcorn + Coke combo when you book 4+ tickets.</p>
+    </div>
+    <button class="btn-book-sm" style="margin-top: 10px; width: 100%; border: 1px solid var(--accent-color); background: rgba(59, 130, 246, 0.1); color: var(--accent-color); transition: all 0.3s; font-size: 0.9rem; padding: 10px;" onmouseover="this.style.background='var(--accent-color)'; this.style.color='white';" onmouseout="this.style.background='rgba(59, 130, 246, 0.1)'; this.style.color='var(--accent-color)';">Claim Combo</button>
+    </div>
+    <div class="offer-card" style="background: linear-gradient(145deg, #1e293b, #0f172a); border: 2px dashed rgba(59, 130, 246, 0.5); border-radius: 15px; padding: 25px; display: flex; flex-direction: column; gap: 15px; transition: transform 0.3s, box-shadow 0.3s; position: relative; overflow: hidden; box-shadow: 0 10px 30px rgba(0,0,0,0.2);">
+    <div style="background: var(--accent-color); color: white; position: absolute; top: 20px; right: -35px; transform: rotate(45deg); padding: 5px 40px; font-weight: 800; font-size: 0.75rem; letter-spacing: 1px; box-shadow: 0 4px 15px rgba(0,0,0,0.4); text-transform: uppercase;">30% OFF</div>
+    <div class="offer-icon" style="font-size: 2.5rem; color: var(--accent-color); background: rgba(59, 130, 246, 0.1); width: 60px; height: 60px; display: flex; align-items: center; justify-content: center; border-radius: 50%;">
+    <i class="fa-solid fa-moon"></i>
+    </div>
+    <div style="flex-grow: 1;">
+    <h3 style="font-size: 1.3rem; margin-bottom: 8px; font-weight: 600;">Midnight Madness </h3>
+    <p style="color: var(--text-secondary); font-size: 0.95rem; line-height: 1.5;">Flat 30% off on all late-night shows starting after 10:00 PM.</p>
+    </div>
+    <button class="btn-book-sm" style="margin-top: 10px; width: 100%; border: 1px solid var(--accent-color); background: rgba(59, 130, 246, 0.1); color: var(--accent-color); transition: all 0.3s; font-size: 0.9rem; padding: 10px;" onmouseover="this.style.background='var(--accent-color)'; this.style.color='white';" onmouseout="this.style.background='rgba(59, 130, 246, 0.1)'; this.style.color='var(--accent-color)';">Book Night Show</button>
+    </div>
+    <div class="offer-card" style="background: linear-gradient(145deg, #1e293b, #0f172a); border: 2px dashed rgba(59, 130, 246, 0.5); border-radius: 15px; padding: 25px; display: flex; flex-direction: column; gap: 15px; transition: transform 0.3s, box-shadow 0.3s; position: relative; overflow: hidden; box-shadow: 0 10px 30px rgba(0,0,0,0.2);">
+    <div style="background: var(--accent-color); color: white; position: absolute; top: 20px; right: -35px; transform: rotate(45deg); padding: 5px 40px; font-weight: 800; font-size: 0.75rem; letter-spacing: 1px; box-shadow: 0 4px 15px rgba(0,0,0,0.4); text-transform: uppercase;">REWARDS</div>
+    <div class="offer-icon" style="font-size: 2.5rem; color: var(--accent-color); background: rgba(59, 130, 246, 0.1); width: 60px; height: 60px; display: flex; align-items: center; justify-content: center; border-radius: 50%;">
+    <i class="fa-solid fa-crown"></i>
+    </div>
+    <div style="flex-grow: 1;">
+    <h3 style="font-size: 1.3rem; margin-bottom: 8px; font-weight: 600;">Loyalty Milestone </h3>
+    <p style="color: var(--text-secondary); font-size: 0.95rem; line-height: 1.5;">Collect 500 TicketNexa Nexus Points on your 5th successful booking.</p>
+    </div>
+    <button class="btn-book-sm" style="margin-top: 10px; width: 100%; border: 1px solid var(--accent-color); background: rgba(59, 130, 246, 0.1); color: var(--accent-color); transition: all 0.3s; font-size: 0.9rem; padding: 10px;" onmouseover="this.style.background='var(--accent-color)'; this.style.color='white';" onmouseout="this.style.background='rgba(59, 130, 246, 0.1)'; this.style.color='var(--accent-color)';">View Points</button>
+    </div>
+    </div>
+    </section>
+    </div>
+    <!-- Sidebar Filters -->
+    <aside class="sidebar-filters" id="movieSidebarFilters">
+    <div class="filter-card">
+    <h3>🎛️ Filters </h3>
+    <div class="filter-group">
+    <label>🎭 Genre</label>
+    <div class="checkbox-list">
+    <label class="checkbox-label"><input type="checkbox" data-type="genre" data-value="Action"> 💥 Action</label>
+    <label class="checkbox-label"><input type="checkbox" data-type="genre" data-value="Adventure"> 🏔️ Adventure</label>
+    <label class="checkbox-label"><input type="checkbox" data-type="genre" data-value="Animation"> 🐨 Animation</label>
+    <label class="checkbox-label"><input type="checkbox" data-type="genre" data-value="Biopic"> 📖 Biopic</label>
+    <label class="checkbox-label"><input type="checkbox" data-type="genre" data-value="Comedy"> 😂 Comedy</label>
+    <label class="checkbox-label"><input type="checkbox" data-type="genre" data-value="Crime"> 🔍 Crime</label>
+    <label class="checkbox-label"><input type="checkbox" data-type="genre" data-value="Drama"> 🎭 Drama</label>
+    <label class="checkbox-label"><input type="checkbox" data-type="genre" data-value="Family"> 👨‍👩‍👧‍👦 Family</label>
+    <label class="checkbox-label"><input type="checkbox" data-type="genre" data-value="Historical"> 📜 Historical</label>
+    <label class="checkbox-label"><input type="checkbox" data-type="genre" data-value="Horror"> 😱 Horror</label>
+    <label class="checkbox-label"><input type="checkbox" data-type="genre" data-value="Musical"> 🎵 Musical</label>
+    <label class="checkbox-label"><input type="checkbox" data-type="genre" data-value="Mystery"> 🕵️ Mystery</label>
+    <label class="checkbox-label"><input type="checkbox" data-type="genre" data-value="Romance"> ❤️ Romance</label>
+    <label class="checkbox-label"><input type="checkbox" data-type="genre" data-value="Sci-Fi"> 🚀 Sci-Fi</label>
+    <label class="checkbox-label"><input type="checkbox" data-type="genre" data-value="Slasher"> 🔪 Slasher</label>
+    <label class="checkbox-label"><input type="checkbox" data-type="genre" data-value="Thriller"> 🕵️‍♂️ Thriller</label>
+    </div>
+    </div>
+    <div class="filter-group">
+    <label>🌐 Language</label>
+    <div class="checkbox-list">
+    <label class="checkbox-label"><input type="checkbox" data-type="language" data-value="Assamese"> 🇮🇳 Assamese</label>
+    <label class="checkbox-label"><input type="checkbox" data-type="language" data-value="Bengali"> 🇮🇳 Bengali</label>
+    <label class="checkbox-label"><input type="checkbox" data-type="language" data-value="Bhojpuri"> 🇮🇳 Bhojpuri</label>
+    <label class="checkbox-label"><input type="checkbox" data-type="language" data-value="English"> 🇬🇧 English</label>
+    <label class="checkbox-label"><input type="checkbox" data-type="language" data-value="French"> 🇫🇷 French</label>
+    <label class="checkbox-label"><input type="checkbox" data-type="language" data-value="Gujarati"> 🇮🇳 Gujarati</label>
+    <label class="checkbox-label"><input type="checkbox" data-type="language" data-value="Hindi"> 🇮🇳 Hindi</label>
+    <label class="checkbox-label"><input type="checkbox" data-type="language" data-value="Japanese"> 🇯🇵 Japanese</label>
+    <label class="checkbox-label"><input type="checkbox" data-type="language" data-value="Kannada"> 🇮🇳 Kannada</label>
+    <label class="checkbox-label"><input type="checkbox" data-type="language" data-value="Korean"> 🇰🇷 Korean</label>
+    <label class="checkbox-label"><input type="checkbox" data-type="language" data-value="Malayalam"> 🇮🇳 Malayalam</label>
+    <label class="checkbox-label"><input type="checkbox" data-type="language" data-value="Manipuri"> 🇮🇳 Manipuri</label>
+    <label class="checkbox-label"><input type="checkbox" data-type="language" data-value="Marathi"> 🇮🇳 Marathi</label>
+    <label class="checkbox-label"><input type="checkbox" data-type="language" data-value="Odia"> 🇮🇳 Odia</label>
+    <label class="checkbox-label"><input type="checkbox" data-type="language" data-value="Panjabi"> 🇮🇳 Panjabi</label>
+    <label class="checkbox-label"><input type="checkbox" data-type="language" data-value="Spanish"> 🇪🇸 Spanish</label>
+    <label class="checkbox-label"><input type="checkbox" data-type="language" data-value="Tamil"> 🇮🇳 Tamil</label>
+    <label class="checkbox-label"><input type="checkbox" data-type="language" data-value="Telugu"> 🇮🇳 Telugu</label>
+    <label class="checkbox-label"><input type="checkbox" data-type="language" data-value="Tulu"> 🇮🇳 Tulu</label>
+    </div>
+    </div>
+    <div class="filter-group">
+    <label>💳 Price</label>
+    <div class="checkbox-list">
+    <label class="checkbox-label"><input type="checkbox" data-type="price" data-value="₹100 - ₹500"> 💵 ₹100 - ₹500</label>
+    <label class="checkbox-label"><input type="checkbox" data-type="price" data-value="₹500 - ₹1000"> 💵 ₹500 - ₹1000</label>
+    <label class="checkbox-label"><input type="checkbox" data-type="price" data-value="₹1000 - ₹1500"> 💵 ₹1000 - ₹1500</label>
+    <label class="checkbox-label"><input type="checkbox" data-type="price" data-value="₹1500 - ₹2000"> 💵 ₹1500 - ₹2000</label>
+    </div>
+    </div>
+    <div class="filter-group">
+    <label>📅 Date</label>
+    <input type="date" class="calendar-input">
+    </div>
+    <button class="btn-apply">Apply Filters</button>
+    </div>
+    </aside>
+    </div>
+    </main>
+    <!-- Professional Footer -->
+    <footer class="footer">
+    <div class="footer-container">
+    <!-- Trust Bar Section -->
+    <div class="footer-trust-bar">
+    <div class="contact-info">
+    <span><i class="fa-solid fa-phone" style="color: var(--accent-color); margin-right: 5px;"></i> Toll No: <strong>+91 8509070211</strong></span>
+    <span style="opacity: 0.3;">|</span>
+    <span><i class="fa-solid fa-headset" style="color: var(--accent-color); margin-right: 5px;"></i> Toll Free No: <strong>1800-419-6666</strong></span>
+    <span style="opacity: 0.3;">|</span>
+    <span><i class="fa-solid fa-envelope" style="color: var(--accent-color); margin-right: 5px;"></i> Email: <strong>pramitkumar.dhal@gmail.com</strong></span>
+    </div>
+    <div class="app-download-section">
+    <span style="font-weight: 600; color: var(--text-primary);">Download The App:</span>
+    <div class="download-buttons">
+    <a href="#" class="app-btn">
+    <i class="fa-brands fa-apple" style="font-size: 1.4rem;"></i>
+    <div style="text-align: left; line-height: 1.2;">
+    <div style="font-size: 0.6rem;">Download on the</div>
+    <div style="font-size: 0.9rem; font-weight: 700;">App Store</div>
+    </div>
+    </a>
+    <a href="#" class="app-btn">
+    <i class="fa-brands fa-google-play" style="font-size: 1.2rem;"></i>
+    <div style="text-align: left; line-height: 1.2;">
+    <div style="font-size: 0.6rem;">GET IT ON</div>
+    <div style="font-size: 0.9rem; font-weight: 700;">Google Play</div>
+    </div>
+    </a>
+    </div>
+    </div>
+    </div>
+    <!-- Social & Legal Section -->
+    <div class="footer-legal-bar">
+    <div class="social-section">
+    <span style="font-weight: 600; color: var(--text-primary);">Stay Connected:</span>
+    <div class="social-icons-row">
+    <a href="#" class="social-btn"><i class="fa-brands fa-instagram"></i></a>
+    <a href="#" class="social-btn"><i class="fa-brands fa-facebook"></i></a>
+    <a href="#" class="social-btn"><i class="fa-brands fa-linkedin"></i></a>
+    <a href="#" class="social-btn"><i class="fa-brands fa-youtube"></i></a>
+    <a href="#" class="social-btn"><i class="fa-brands fa-twitter"></i></a>
+    </div>
+    </div>
+    <ul class="legal-links">
+    <li><a href="#">Security & Fraud</a></li>
+    <li><a href="#">Privacy Notice</a></li>
+    <li><a href="#">Terms of Use</a></li>
+    <li><a href="#">Beware of Fraudsters</a></li>
+    <li><a href="#">Be Safe Complaints</a></li>
+    </ul>
+    <div class="copyright-text"> &copy; 2024 <strong>TicketNexa</strong> BY Pramit </div>
+    </div>
+    </div>
+    </footer>
+    </div>
+    <!-- Auth Modals -->
+    <div id="authModal" class="modal">
+    <div class="modal-content glass-card">
+    <span class="close-modal">&times;</span>
+    <div id="loginForm" class="auth-form">
+    <h2>LogIn to TicketNexa</h2>
+    <p class="auth-subtitle">Welcome back! Please enter your details.</p>
+    <form>
+    <div class="form-group">
+    <label>Email Address</label>
+    <input type="email" placeholder="example@email.com" required>
+    </div>
+    <div class="form-group">
+    <label>Password</label>
+    <input type="password" placeholder="••••••••" required>
+    </div>
+    <div class="form-options">
+    <label class="remember-me"><input type="checkbox"> Remember me</label>
+    <a href="#" class="forgot-password">Forgot Password?</a>
+    </div>
+    <button type="submit" class="btn-auth-submit">LogIn</button>
+    </form>
+    <p class="auth-switch">Don't have an account? <a href="#" id="switchToSignup">SignUp</a></p>
+    </div>
+    <div id="signupForm" class="auth-form" style="display: none;">
+    <h2>Create Account</h2>
+    <p class="auth-subtitle">Join TicketNexa for exclusive deals!</p>
+    <form>
+    <div class="form-group">
+    <label>Full Name</label>
+    <input type="text" placeholder="John Doe" required>
+    </div>
+    <div class="form-group">
+    <label>Email Address</label>
+    <input type="email" placeholder="example@email.com" required>
+    </div>
+    <div class="form-group">
+    <label>Password</label>
+    <input type="password" placeholder="••••••••" required>
+    </div>
+    <div class="form-group">
+    <label>Confirm Password</label>
+    <input type="password" placeholder="••••••••" required>
+    </div>
+    <button type="submit" class="btn-auth-submit">SignUp</button>
+    </form>
+    <p class="auth-switch">Already have an account? <a href="#" id="switchToLogin">LogIn</a></p>
+    </div>
+    </div>
+    </div>
+    <script src="app.js"></script>
+        <!-- Booking Format Modal -->
+    <div id="bookingModal" class="modal-overlay">
+        <div class="modal-content">
+            <button class="modal-close" id="closeBookingModal">&times;</button>
+            <div class="modal-header">
+                <h2 id="modalMovieTitle">Select Movie Experience</h2>
+                <p id="modalSubTitle">Choose your preferred format to continue booking</p>
+            </div>
+            
+            <!-- Step 1: Format Selection -->
+            <div id="formatSelectionView">
+                <div class="format-options-grid" id="formatOptionsGrid">
+                    <!-- Formats will be injected here via JS -->
+                </div>
+                <button id="confirmFormatBtn" class="btn-auth-submit" style="width: 100%; margin-top: 20px;">Proceed to Selection</button>
+            </div>
+
+            <!-- Step 2: Theater & Showtimes Selection (Hidden by default) -->
+            <div id="showtimeSelectionView" style="display: none;">
+                <div class="theaters-list" id="theatersList" style="max-height: 400px; overflow-y: auto; margin-top: 20px; padding-right: 10px;">
+                    <!-- Theaters and showtimes will be injected here -->
+                </div>
+                <div style="display: flex; gap: 10px; margin-top: 20px;">
+                    <button id="backToFormatBtn" class="btn-auth-submit" style="background: rgba(255,255,255,0.1); flex: 1;">Back</button>
+                                        <button id="finalBookBtn" class="btn-auth-submit" style="flex: 2;">Select Seat(s)</button>
+                </div>
+            </div>
+            <!-- Step 3: Seat Selection (Hidden by default) -->
+            <div id="seatSelectionView" style="display: none;">
+                <div class="seat-picker-header">
+                    <div class="seat-count-selector">
+                        <span>How many seats?</span>
+                        <div class="count-chips" id="seatCountChips">
+                            <span class="count-chip active" data-count="1">1</span>
+                            <span class="count-chip" data-count="2">2</span>
+                            <span class="count-chip" data-count="3">3</span>
+                            <span class="count-chip" data-count="4">4</span>
+                            <span class="count-chip" data-count="5">5</span>
+                            <span class="count-chip" data-count="6">6</span>
+                            <span class="count-chip" data-count="7">7</span>
+                            <span class="count-chip" data-count="8">8</span>
+                            <span class="count-chip" data-count="9">9</span>
+                            <span class="count-chip" data-count="10">10</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="audi-container">
+                    <div class="screen-arc">SCREEN THIS WAY</div>
+                    <div class="seats-layout" id="seatsLayout">
+                        <!-- Seats will be generated here -->
+                    </div>
+                    <div class="seat-legend">
+                        <div class="legend-item"><span class="seat-box available"></span> Available</div>
+                        <div class="legend-item"><span class="seat-box selected"></span> Selected</div>
+                        <div class="legend-item"><span class="seat-box occupied"></span> Sold</div>
+                    </div>
+                </div>
+
+                <div class="booking-footer-summary">
+                    <div class="summary-left">
+                        <span id="selectedSeatsText">Select Seats</span>
+                        <h3 id="totalPriceText">₹0.00</h3>
+                    </div>
+                    <div style="display: flex; gap: 10px;">
+                        <button id="backToTheatersBtn" class="btn-auth-submit" style="background: rgba(255,255,255,0.1); width: auto;">Back</button>
+                        <button id="confirmTicketsBtn" class="btn-auth-submit" style="flex: 1;">Pay Now</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Sports Booking Modal -->
+    <div id="sportsBookingModal" class="modal-overlay">
+        <div class="modal-content" style="max-width: 900px;">
+            <button class="modal-close" id="closeSportsBookingModal">&times;</button>
+            <div class="modal-header">
+                <h2 id="sportsModalMovieTitle">Select Stadium Block</h2>
+                <p id="sportsModalSubTitle">Choose your preferred seating area</p>
+            </div>
+            
+            <div id="stadiumSelectionView">
+                <div class="sports-stadium-container">
+                    <div class="cricket-pitch">PITCH</div>
+                    
+                    <div class="stadium-stands">
+                        <div class="stand north-stand" data-stand="North Stand" data-price="1500">
+                            <span>North Stand</span>
+                            <div class="stand-price">₹1500</div>
+                        </div>
+                        <div class="stand south-pavilion" data-stand="South Pavilion (VIP)" data-price="5000">
+                            <span>South Pavilion (VIP)</span>
+                            <div class="stand-price">₹5000</div>
+                        </div>
+                        <div class="stand east-gallery" data-stand="East Gallery" data-price="800">
+                            <span>East Gallery</span>
+                            <div class="stand-price">₹800</div>
+                        </div>
+                        <div class="stand west-gallery" data-stand="West Gallery" data-price="800">
+                            <span>West Gallery</span>
+                            <div class="stand-price">₹800</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="sports-booking-footer" id="sportsBookingFooter" style="display: none; flex-direction: column; gap: 20px;">
+                    <div class="seat-picker-header" style="margin-bottom: 0;">
+                        <div class="seat-count-selector" style="flex-direction: row; gap: 20px;">
+                            <span>How many seats?</span>
+                            <div class="count-chips" id="sportsSeatCountChips">
+                                <span class="count-chip active" data-count="1">1</span>
+                                <span class="count-chip" data-count="2">2</span>
+                                <span class="count-chip" data-count="3">3</span>
+                                <span class="count-chip" data-count="4">4</span>
+                                <span class="count-chip" data-count="5">5</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="booking-footer-summary">
+                        <div class="summary-left">
+                            <span id="sportsSelectedStandText">Select a Block</span>
+                            <h3 id="sportsTotalPriceText">₹0.00</h3>
+                        </div>
+                        <div style="display: flex; gap: 10px;">
+                            <button id="sportsPayNowBtn" class="btn-auth-submit" style="flex: 1;">Pay Now</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Football Booking Modal -->
+    <div id="footballBookingModal" class="modal-overlay">
+        <div class="modal-content" style="max-width: 900px;">
+            <button class="modal-close" id="closeFootballBookingModal">&times;</button>
+            <div class="modal-header">
+                <h2 id="footballModalMovieTitle">Select Football Stadium Block</h2>
+                <p id="footballModalSubTitle">Choose your preferred seating area for the match</p>
+            </div>
+            
+            <div id="footballStadiumSelectionView">
+                <div class="football-stadium-container">
+                    <div class="football-pitch">
+                        <div class="center-circle"></div>
+                        <div class="half-line"></div>
+                        <div class="penalty-box left-box"></div>
+                        <div class="penalty-box right-box"></div>
+                    </div>
+                    
+                    <div class="stadium-stands">
+                        <div class="stand fb-north-stand" data-stand="North Gallery" data-price="1200">
+                            <span>North Gallery</span>
+                            <div class="stand-price">₹1200</div>
+                        </div>
+                        <div class="stand fb-south-stand" data-stand="South Gallery" data-price="1200">
+                            <span>South Gallery</span>
+                            <div class="stand-price">₹1200</div>
+                        </div>
+                        <div class="stand fb-east-stand" data-stand="East Stand (VIP)" data-price="6000">
+                            <span>East Stand (VIP)</span>
+                            <div class="stand-price">₹6000</div>
+                        </div>
+                        <div class="stand fb-west-stand" data-stand="West Stand" data-price="3000">
+                            <span>West Stand</span>
+                            <div class="stand-price">₹3000</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="sports-booking-footer" id="footballBookingFooter" style="display: none; flex-direction: column; gap: 20px;">
+                    <div class="seat-picker-header" style="margin-bottom: 0;">
+                        <div class="seat-count-selector" style="flex-direction: row; gap: 20px;">
+                            <span>How many seats?</span>
+                            <div class="count-chips" id="footballSeatCountChips">
+                                <span class="count-chip active" data-count="1">1</span>
+                                <span class="count-chip" data-count="2">2</span>
+                                <span class="count-chip" data-count="3">3</span>
+                                <span class="count-chip" data-count="4">4</span>
+                                <span class="count-chip" data-count="5">5</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="booking-footer-summary">
+                        <div class="summary-left">
+                            <span id="footballSelectedStandText">Select a Block</span>
+                            <h3 id="footballTotalPriceText">₹0.00</h3>
+                        </div>
+                        <div style="display: flex; gap: 10px;">
+                            <button id="footballPayNowBtn" class="btn-auth-submit" style="flex: 1;">Pay Now</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>
+
+    <!-- Tennis Booking Modal -->
+    <div id="tennisBookingModal" class="modal-overlay">
+        <div class="modal-content" style="max-width: 900px;">
+            <button class="modal-close" id="closeTennisBookingModal">&times;</button>
+            <div class="modal-header">
+                <h2 id="tennisModalMovieTitle">Select Tennis Court Block</h2>
+                <p id="tennisModalSubTitle">Choose your preferred seating area for the match</p>
+            </div>
+            
+            <div id="tennisStadiumSelectionView">
+                <div class="tennis-stadium-container">
+                    <div class="tennis-pitch">
+                        <div class="tennis-net"></div>
+                        <div class="tennis-service-line-left"></div>
+                        <div class="tennis-service-line-right"></div>
+                        <div class="tennis-center-line"></div>
+                    </div>
+                    
+                    <div class="stadium-stands">
+                        <div class="stand tn-north-stand" data-stand="North Baseline" data-price="2500">
+                            <span>North Baseline</span>
+                            <div class="stand-price">₹2500</div>
+                        </div>
+                        <div class="stand tn-south-stand" data-stand="South Baseline" data-price="2500">
+                            <span>South Baseline</span>
+                            <div class="stand-price">₹2500</div>
+                        </div>
+                        <div class="stand tn-east-stand" data-stand="Umpire Side (VIP)" data-price="8000">
+                            <span>Umpire Side (VIP)</span>
+                            <div class="stand-price">₹8000</div>
+                        </div>
+                        <div class="stand tn-west-stand" data-stand="Player Box Side" data-price="6000">
+                            <span>Player Box Side</span>
+                            <div class="stand-price">₹6000</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="sports-booking-footer" id="tennisBookingFooter" style="display: none; flex-direction: column; gap: 20px;">
+                    <div class="seat-picker-header" style="margin-bottom: 0;">
+                        <div class="seat-count-selector" style="flex-direction: row; gap: 20px;">
+                            <span>How many seats?</span>
+                            <div class="count-chips" id="tennisSeatCountChips">
+                                <span class="count-chip active" data-count="1">1</span>
+                                <span class="count-chip" data-count="2">2</span>
+                                <span class="count-chip" data-count="3">3</span>
+                                <span class="count-chip" data-count="4">4</span>
+                                <span class="count-chip" data-count="5">5</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="booking-footer-summary">
+                        <div class="summary-left">
+                            <span id="tennisSelectedStandText">Select a Block</span>
+                            <h3 id="tennisTotalPriceText">₹0.00</h3>
+                        </div>
+                        <div style="display: flex; gap: 10px;">
+                            <button id="tennisPayNowBtn" class="btn-auth-submit" style="flex: 1;">Pay Now</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Basketball Booking Modal -->
+    <div id="basketballBookingModal" class="modal-overlay">
+        <div class="modal-content" style="max-width: 900px;">
+            <button class="modal-close" id="closeBasketballBookingModal">&times;</button>
+            <div class="modal-header">
+                <h2 id="basketballModalMovieTitle">Select Basketball Court Block</h2>
+                <p id="basketballModalSubTitle">Choose your preferred seating area for the game</p>
+            </div>
+            
+            <div id="basketballStadiumSelectionView">
+                <div class="basketball-stadium-container sports-stadium-container">
+                    <div class="basketball-pitch">
+                        <div class="bb-key-left"></div>
+                        <div class="bb-key-right"></div>
+                        <div class="bb-center-circle"></div>
+                        <div class="bb-half-line"></div>
+                    </div>
+                    
+                    <div class="stadium-stands">
+                        <div class="stand fb-north-stand" data-stand="Baseline North" data-price="3000">
+                            <span>Baseline North</span>
+                            <div class="stand-price">₹3000</div>
+                        </div>
+                        <div class="stand fb-south-stand" data-stand="Baseline South" data-price="3000">
+                            <span>Baseline South</span>
+                            <div class="stand-price">₹3000</div>
+                        </div>
+                        <div class="stand fb-east-stand" data-stand="Courtside VIP" data-price="15000">
+                            <span>Courtside VIP</span>
+                            <div class="stand-price">₹15000</div>
+                        </div>
+                        <div class="stand fb-west-stand" data-stand="Lower Bowl West" data-price="5000">
+                            <span>Lower Bowl West</span>
+                            <div class="stand-price">₹5000</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="sports-booking-footer" id="basketballBookingFooter" style="display: none; flex-direction: column; gap: 20px;">
+                    <div class="seat-picker-header" style="margin-bottom: 0;">
+                        <div class="seat-count-selector" style="flex-direction: row; gap: 20px;">
+                            <span>How many seats?</span>
+                            <div class="count-chips" id="basketballSeatCountChips">
+                                <span class="count-chip active" data-count="1">1</span>
+                                <span class="count-chip" data-count="2">2</span>
+                                <span class="count-chip" data-count="3">3</span>
+                                <span class="count-chip" data-count="4">4</span>
+                                <span class="count-chip" data-count="5">5</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="booking-footer-summary">
+                        <div class="summary-left">
+                            <span id="basketballSelectedStandText">Select a Block</span>
+                            <h3 id="basketballTotalPriceText">₹0.00</h3>
+                        </div>
+                        <div style="display: flex; gap: 10px;">
+                            <button id="basketballPayNowBtn" class="btn-auth-submit" style="flex: 1;">Pay Now</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Olympic Booking Modal -->
+    <div id="olympicBookingModal" class="modal-overlay">
+        <div class="modal-content" style="max-width: 900px;">
+            <button class="modal-close" id="closeOlympicBookingModal">&times;</button>
+            <div class="modal-header">
+                <h2 id="olympicModalMovieTitle">Select Olympic Ground Block</h2>
+                <p id="olympicModalSubTitle">Choose your preferred seating area for the games</p>
+            </div>
+            
+            <div id="olympicStadiumSelectionView">
+                <div class="olympic-stadium-container sports-stadium-container">
+                    <div class="olympic-pitch">
+                        <div class="ol-track">
+                            <div class="ol-grass"></div>
+                        </div>
+                    </div>
+                    
+                    <div class="stadium-stands">
+                        <div class="stand fb-north-stand" data-stand="North Curve" data-price="8000">
+                            <span>North Curve</span>
+                            <div class="stand-price">₹8000</div>
+                        </div>
+                        <div class="stand fb-south-stand" data-stand="South Curve" data-price="8000">
+                            <span>South Curve</span>
+                            <div class="stand-price">₹8000</div>
+                        </div>
+                        <div class="stand fb-east-stand" data-stand="East Stand" data-price="12000">
+                            <span>East Stand</span>
+                            <div class="stand-price">₹12000</div>
+                        </div>
+                        <div class="stand fb-west-stand" data-stand="Main Grandstand (VIP)" data-price="20000">
+                            <span>Main Grandstand (VIP)</span>
+                            <div class="stand-price">₹20000</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="sports-booking-footer" id="olympicBookingFooter" style="display: none; flex-direction: column; gap: 20px;">
+                    <div class="seat-picker-header" style="margin-bottom: 0;">
+                        <div class="seat-count-selector" style="flex-direction: row; gap: 20px;">
+                            <span>How many seats?</span>
+                            <div class="count-chips" id="olympicSeatCountChips">
+                                <span class="count-chip active" data-count="1">1</span>
+                                <span class="count-chip" data-count="2">2</span>
+                                <span class="count-chip" data-count="3">3</span>
+                                <span class="count-chip" data-count="4">4</span>
+                                <span class="count-chip" data-count="5">5</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="booking-footer-summary">
+                        <div class="summary-left">
+                            <span id="olympicSelectedStandText">Select a Block</span>
+                            <h3 id="olympicTotalPriceText">₹0.00</h3>
+                        </div>
+                        <div style="display: flex; gap: 10px;">
+                            <button id="olympicPayNowBtn" class="btn-auth-submit" style="flex: 1;">Pay Now</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>
+
+    <!-- Event Booking Modal -->
+    <div id="eventBookingModal" class="modal-overlay">
+        <div class="modal-content" style="max-width: 600px;">
+            <button class="modal-close" id="closeEventBookingModal">&times;</button>
+            <div class="modal-header">
+                <h2 id="eventModalTitle">Event Title</h2>
+                <p id="eventModalSubTitle">Step 1: Confirm Showtime</p>
+            </div>
+            
+            <!-- Step 1: Showtime Selection -->
+            <div id="eventTimeSelectionView">
+                <div style="background: rgba(255,255,255,0.05); padding: 30px; border-radius: 20px; border: 1px solid var(--glass-border); margin: 30px 0; text-align: center;">
+                    <p style="font-weight: 600; margin-bottom: 20px; color: var(--text-secondary);">Available Showtime:</p>
+                    <div style="display: flex; gap: 15px; justify-content: center;">
+                        <div class="showtime-chip selected" id="eventRandomShowtime" style="width: 150px; text-align: center; font-size: 1.2rem; cursor: default;">00:00 PM</div>
+                    </div>
+                </div>
+                <button id="eventProceedBtn" class="btn-auth-submit" style="width: 100%;">Proceed</button>
+            </div>
+
+            <!-- Step 2: Ticket Selection -->
+            <div id="eventTicketSelectionView" style="display: none;">
+                <div id="paidTicketTiers" class="ticket-tiers-container">
+                    <!-- Platinum -->
+                    <div class="ticket-tier-row">
+                        <div class="tier-info">
+                            <div class="tier-name" style="color: #e5e4e2;">Platinum Class <i class="fa-solid fa-crown" style="color: #e5e4e2;"></i></div>
+                            <div class="tier-price">₹10,000</div>
+                        </div>
+                        <div class="tier-counter">
+                            <button class="tier-btn minus-btn" data-tier="platinum">-</button>
+                            <span class="tier-count" id="count-platinum">0</span>
+                            <button class="tier-btn plus-btn" data-tier="platinum">+</button>
+                        </div>
+                    </div>
+                    <!-- Gold -->
+                    <div class="ticket-tier-row">
+                        <div class="tier-info">
+                            <div class="tier-name" style="color: #FFD700;">Gold Class <i class="fa-solid fa-star" style="color: #FFD700;"></i></div>
+                            <div class="tier-price">₹5,000</div>
+                        </div>
+                        <div class="tier-counter">
+                            <button class="tier-btn minus-btn" data-tier="gold">-</button>
+                            <span class="tier-count" id="count-gold">0</span>
+                            <button class="tier-btn plus-btn" data-tier="gold">+</button>
+                        </div>
+                    </div>
+                    <!-- Silver -->
+                    <div class="ticket-tier-row">
+                        <div class="tier-info">
+                            <div class="tier-name" style="color: #C0C0C0;">Silver Class <i class="fa-solid fa-certificate" style="color: #C0C0C0;"></i></div>
+                            <div class="tier-price">₹2,000</div>
+                        </div>
+                        <div class="tier-counter">
+                            <button class="tier-btn minus-btn" data-tier="silver">-</button>
+                            <span class="tier-count" id="count-silver">0</span>
+                            <button class="tier-btn plus-btn" data-tier="silver">+</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="freeTicketTiers" class="ticket-tiers-container" style="display: none;">
+                    <!-- Free Access -->
+                    <div class="ticket-tier-row" style="border-color: #4CAF50; background: rgba(76, 175, 80, 0.05);">
+                        <div class="tier-info">
+                            <div class="tier-name" style="color: #4CAF50;">Free Registration <i class="fa-solid fa-ticket" style="color: #4CAF50;"></i></div>
+                            <div class="tier-price" style="color: #4CAF50;">$0.00 (Free)</div>
+                        </div>
+                        <div class="tier-counter">
+                            <button class="tier-btn minus-btn" data-tier="free">-</button>
+                            <span class="tier-count" id="count-free">0</span>
+                            <button class="tier-btn plus-btn" data-tier="free">+</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="booking-footer-summary" style="margin-top: 30px;">
+                    <div class="summary-left">
+                        <span id="eventSelectedTicketsText">0 Tickets</span>
+                        <h3 id="eventTotalPriceText">₹0.00</h3>
+                    </div>
+                    <div style="display: flex; gap: 10px;">
+                        <button id="eventBackBtn" class="btn-auth-submit" style="background: rgba(255,255,255,0.1); width: auto;">Back</button>
+                        <button id="eventPayNowBtn" class="btn-auth-submit" style="flex: 1;">Pay Now</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- IPL Booking Modal -->
+    <div id="iplBookingModal" class="modal-overlay">
+        <div class="modal-content" style="max-width: 900px;">
+            <button class="modal-close" id="closeIplBookingModal">&times;</button>
+            <div class="modal-header">
+                <h2 id="iplModalMovieTitle">IPL 2026 Ticket Booking</h2>
+                <p id="iplModalSubTitle">Select your stand from the 10 Pavilion Blocks</p>
+            </div>
+            
+            <div id="iplStadiumSelectionView">
+                <div class="sports-stadium-container ipl-stadium-container" style="height: 520px; border-radius: 50%; overflow: hidden;">
+                    <div class="sports-pitch" style="width: 150px; height: 150px; border-radius: 50%; border: 2px dashed rgba(255,255,255,0.5); z-index: 2; transform: translate(0, 0);">
+                        <div style="width: 70px; height: 25px; background: #e6b981; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); border: 1px solid white;"></div>
+                    </div>
+                    
+                    <div class="stadium-stands ipl-stands-wrapper">
+                        <div class="stand ipl-stand ipl-stand-1" data-stand="Block 1 (North Pavilion Primary)" data-price="4000"><span>B1</span><div class="stand-price" style="font-size:0.6rem">₹4000</div></div>
+                        <div class="stand ipl-stand ipl-stand-2" data-stand="Block 2 (North-East Stand)" data-price="2500"><span>B2</span><div class="stand-price" style="font-size:0.6rem">₹2500</div></div>
+                        <div class="stand ipl-stand ipl-stand-3" data-stand="Block 3 (East Stand Upper)" data-price="2000"><span>B3</span><div class="stand-price" style="font-size:0.6rem">₹2000</div></div>
+                        <div class="stand ipl-stand ipl-stand-4" data-stand="Block 4 (South-East Stand)" data-price="2500"><span>B4</span><div class="stand-price" style="font-size:0.6rem">₹2500</div></div>
+                        <div class="stand ipl-stand ipl-stand-5" data-stand="Block 5 (South Pavilion VIP)" data-price="8000"><span>B5</span><div class="stand-price" style="font-size:0.6rem">₹8000</div></div>
+                        <div class="stand ipl-stand ipl-stand-6" data-stand="Block 6 (South VIP Box)" data-price="10000"><span>B6</span><div class="stand-price" style="font-size:0.6rem">₹10K</div></div>
+                        <div class="stand ipl-stand ipl-stand-7" data-stand="Block 7 (South-West Stand)" data-price="2500"><span>B7</span><div class="stand-price" style="font-size:0.6rem">₹2500</div></div>
+                        <div class="stand ipl-stand ipl-stand-8" data-stand="Block 8 (West Stand Upper)" data-price="2000"><span>B8</span><div class="stand-price" style="font-size:0.6rem">₹2000</div></div>
+                        <div class="stand ipl-stand ipl-stand-9" data-stand="Block 9 (North-West Stand)" data-price="2500"><span>B9</span><div class="stand-price" style="font-size:0.6rem">₹2500</div></div>
+                        <div class="stand ipl-stand ipl-stand-10" data-stand="Block 10 (North Pavilion Secondary)" data-price="4000"><span>B10</span><div class="stand-price" style="font-size:0.6rem">₹4000</div></div>
+                    </div>
+                </div>
+
+                <div class="sports-booking-footer" id="iplBookingFooter" style="display: none; flex-direction: column; gap: 20px;">
+                    <div class="seat-picker-header" style="margin-bottom: 0;">
+                        <div class="seat-count-selector" style="flex-direction: row; gap: 20px;">
+                            <span>How many seats?</span>
+                            <div class="count-chips" id="iplSeatCountChips">
+                                <span class="count-chip active" data-count="1">1</span>
+                                <span class="count-chip" data-count="2">2</span>
+                                <span class="count-chip" data-count="3">3</span>
+                                <span class="count-chip" data-count="4">4</span>
+                                <span class="count-chip" data-count="5">5</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="booking-footer-summary">
+                        <div class="summary-left">
+                            <span id="iplSelectedStandText">Select a Block</span>
+                            <h3 id="iplTotalPriceText">₹0.00</h3>
+                        </div>
+                        <div style="display: flex; gap: 10px;">
+                            <button id="iplPayNowBtn" class="btn-auth-submit" style="flex: 1;">Pay Now</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+    </html>
